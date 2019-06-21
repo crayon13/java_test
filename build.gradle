@@ -1,0 +1,88 @@
+plugins {
+    id 'java'
+}
+
+group 'test'
+version '1.0-SNAPSHOT'
+
+ext{
+    /*
+    if("$target" == "weblogic"){
+        javaVersion = '1.5'
+    } else {
+        javaVersion = '1.7'
+    }
+    */
+    javaVersion = '1.8'
+}
+
+
+sourceCompatibility = javaVersion
+targetCompatibility = javaVersion
+
+repositories {
+//    maven { url "http://nexus.11stcorp.com:8081/nexus/content/groups/public/" }
+//    mavenLocal()
+    mavenCentral()
+}
+
+
+dependencies {
+    compile 'org.slf4j:slf4j-api:1.7.5'
+    compile 'org.projectlombok:lombok:1.16.8'
+
+    compile 'kr.co.seeroo:acp_lib:1.1.0'
+    compile 'kr.co.seeroo:spc_lib:1.1.0'
+    compile 'com.netflix.archaius:archaius-core:0.7.1'
+    compile 'net.sourceforge.barbecue:barbecue:1.5-beta1'
+    compile 'org.bouncycastle:bcprov-jdk15on:1.53'
+    compile 'com.pionnet:common-pionnet:1.0'
+    compile 'commons-fileupload:commons-fileupload:1.2.1'
+    compile 'net.sf.ezmorph:ezmorph:1.0.4'
+    compile 'com.google.guava:guava:18.0'
+    compile 'org.hamcrest:hamcrest-all:1.3'
+    compile 'org.apache.httpcomponents:httpcore:4.3'
+    compile 'org.codehaus.jackson:jackson-core-asl:1.9.13'
+    compile 'org.codehaus.jackson:jackson-mapper-asl:1.9.13'
+    compile 'org.javassist:javassist:3.15.0-GA'
+    compile 'redis.clients:jedis:2.1.0'
+    compile 'joda-time:joda-time:2.6'
+    compile 'com.skplanet.syruppay:jose_jdk1.5:1.3.2'
+    compile 'org.mozilla.jss:jss:3.4'
+    compile 'ch.qos.logback:logback-classic:1.1.3'
+    compile 'ch.qos.logback:logback-core:1.1.3'
+    compile 'com.nateon:nateon-secure:1.0'
+    compile 'org.reflections:reflections:0.9.9-RC1'
+    compile 'nl.captcha:simplecaptcha:1.2.1'
+    compile 'org.slf4j:slf4j-log4j12:1.7.5'
+    compile 'org.twitter4j:twitter4j-core:2.1.4'
+    compile 'org.apache.zookeeper:zookeeper:3.3.6'
+    compile 'javax.xml.soap:javax-xml-soap:1.6.0'
+    compile 'kr.co.danal.rnd:teledit_jvm_1.4_utf-8:1.2.0'
+    compile 'com.mobilians:tmoney:1.0.0'
+    // lib add end
+    // lib add 17.07.17
+    compile 'com.polaris:mall-enc:1.0.0'
+    compile 'mup.mcash:mcashv2:1.1.0'
+
+    compile 'nona11st.solution.ktbsol.realip:nona11st:1.0.0'
+    compile 'vine:converter-gson:0.4.1'
+    //lib add 17.09.20
+    compile group: 'com.abtest', name: 'plab-was-java', version: '0.6.1'
+
+    compile group:'elevenst', name:'lib-gnb', version:'1.0.3', changing:true
+
+    compile 'javax.servlet:servlet-api:2.4'
+    compile 'javax.servlet:jsp-api:2.0'
+    compile 'oracle:ojdbc14:10.2.0.4.0'
+    compile 'org.apache.commons:commons-lang3:3.3.2'
+    compile 'net.sf.json-lib:json-lib:1.1:jdk13'
+    compile 'commons-httpclient:commons-httpclient:3.1-rc1'
+    compile 'org.apache.httpcomponents:httpclient:4.2.3'
+    compile 'org.apache.httpcomponents:httpmime:4.2.3'
+    compile 'com.google.http-client:google-http-client-gson:1.21.0'
+    compile 'com.google.code.gson:gson:2.2.2'
+
+
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
