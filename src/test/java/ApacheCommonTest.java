@@ -15,6 +15,7 @@ import java.util.Date;
 import java.util.List;
 
 import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.not;
 import static org.junit.Assert.*;
 
 
@@ -62,14 +63,12 @@ public class ApacheCommonTest {
         assertThat( StringUtils.isEmpty(""), is(true));
         assertThat( StringUtils.isEmpty(null), is(true));
 
-
         List<String> testList = new ArrayList<>();
         testList.add("1");
         testList.add("2");
         testList.add("3");
 
         assertThat( StringUtils.join(testList, ","), is("1,2,3"));
-
 
         String testString1 = "";
         String testString2 = "1";
@@ -182,7 +181,7 @@ public class ApacheCommonTest {
         MockObject object1 = new MockObject("id", "name", 0);
         MockObject object2 = new MockObject("id", "name", 1);
 
-        assertThat(object1.toString(), is(object2.toString()));
+        assertThat(object1.toString(), not(object2.toString()));
     }
 
     @Test
