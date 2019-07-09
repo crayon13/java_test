@@ -23,6 +23,7 @@ public class ApacheCommonTest {
 
     @Test
     public void booleanUtilsTest() {
+        System.out.println("---");
 
         assertTrue(BooleanUtils.toBoolean("true"));
         assertFalse(BooleanUtils.toBoolean("false"));
