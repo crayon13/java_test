@@ -1,3 +1,4 @@
+import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang3.BooleanUtils;
 import org.apache.commons.lang3.Range;
 import org.apache.commons.lang3.StringUtils;
@@ -193,6 +194,10 @@ public class ApacheCommonTest {
         System.out.println(Double.parseDouble(givenString));
     }
 
+
+    @Test void filenameUtilsTest() {
+        assertThat(FilenameUtils.getExtension("a.txt"), is("txt"));
+    }
 
 
     private class MockObject {

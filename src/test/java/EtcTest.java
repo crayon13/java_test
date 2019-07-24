@@ -3,6 +3,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.hamcrest.core.Is.is;
@@ -32,4 +33,19 @@ public class EtcTest {
         String actualConcatString2 = StringUtils.join(testList, ",");
         Assert.assertThat(actualConcatString2, is(expectString));
     }
+
+    @Test
+    public void listLamdaReduceTest2(){
+
+
+    }
+
+    private static String getExcludeKeyword(String keyword) {
+        String[] excludeKeywords = {"무신사", "musinsa", "우신사", "wusinsa"};
+
+        String result = Arrays.stream(excludeKeywords).anyMatch(excludeKeyword -> keyword.toLowerCase().equals(excludeKeyword.trim())) ? keyword : "";
+        return result;
+    }
+
+
 }
