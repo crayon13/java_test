@@ -72,13 +72,33 @@ public class ApacheCommonTest {
 
         assertThat( StringUtils.join(testList, ","), is("1,2,3"));
 
-        String testString1 = "";
-        String testString2 = "1";
-        String testString3 = "2";
-        String testString4 = "3";
+        String testStringNull = null;
+        String testStringBlank = " ";
+        String testString1 = "1";
+        String testString2 = "2";
+        String testString3 = "3";
         assertThat(
-                StringUtils.isAnyEmpty(testString1, testString2, testString3, testString3),
+                StringUtils.isAnyBlank(testStringNull, testStringBlank, testString1, testString2, testString3),
                 is(true) );
+        assertThat(
+            StringUtils.isNoneBlank(testStringNull, testStringBlank, testString1, testString2, testString3),
+            is(false) );
+
+
+        assertThat(
+            StringUtils.isAnyEmpty(testStringNull, testStringBlank, testString1, testString2, testString3),
+            is(true) );
+        assertThat(
+            StringUtils.isNoneEmpty(testStringNull, testStringBlank, testString1, testString2, testString3),
+            is(false) );
+
+
+        assertThat(
+            StringUtils.isAnyEmpty(testStringBlank, testString1, testString2, testString3),
+            is(false) );
+        assertThat(
+            StringUtils.isNoneEmpty(testStringBlank, testString1, testString2, testString3),
+            is(true) );
 
     }
 
@@ -195,7 +215,8 @@ public class ApacheCommonTest {
     }
 
 
-    @Test void filenameUtilsTest() {
+    @Test
+    public void filenameUtilsTest() {
         assertThat(FilenameUtils.getExtension("a.txt"), is("txt"));
     }
 
