@@ -52,6 +52,7 @@ dependencies {
     compile 'org.apache.httpcomponents:httpmime:4.2.3'
     compile 'com.google.http-client:google-http-client-gson:1.21.0'
     compile 'net.sf.json-lib:json-lib:1.1:jdk13'
+    compile group: 'org.imgscalr', name: 'imgscalr-lib', version: '4.2'
 
 }
 
