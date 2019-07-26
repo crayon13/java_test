@@ -18,7 +18,7 @@ public final class DateTime {
     /**
      * check date string validation with the default format "yyyyMMdd".
      * @param s date string you want to check with default format "yyyyMMdd".
-     * @return date java.util.Date
+     * @return date java.lang3.Date
      */
     public static java.util.Date check(String s) throws java.text.ParseException {
         return check(s, "yyyyMMdd");
@@ -28,7 +28,7 @@ public final class DateTime {
      * check date string validation with an user defined format.
      * @param s date string you want to check.
      * @param format string representation of the date format. For example, "yyyy-MM-dd".
-     * @return date java.util.Date
+     * @return date java.lang3.Date
      */
     public static java.util.Date check(String s, String format) throws java.text.ParseException {
         if ( s == null )
@@ -64,8 +64,8 @@ public final class DateTime {
     /**
      * check date string validation with the default format "yyyyMMdd".
      * @param s date string you want to check with default format "yyyyMMdd"
-     * @return boolean true ³¯Â¥ Çü½ÄÀÌ ¸Â°í, Á¸ÀçÇÏ´Â ³¯Â¥ÀÏ ¶§
-     *                 false ³¯Â¥ Çü½ÄÀÌ ¸ÂÁö ¾Ê°Å³ª, Á¸ÀçÇÏÁö ¾Ê´Â ³¯Â¥ÀÏ ¶§
+     * @return boolean true ï¿½ï¿½Â¥ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Â°ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½Â¥ï¿½ï¿½ ï¿½ï¿½
+     *                 false ï¿½ï¿½Â¥ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ê°Å³ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê´ï¿½ ï¿½ï¿½Â¥ï¿½ï¿½ ï¿½ï¿½
      */
     public static boolean isValid(String s) throws Exception {
         return DateTime.isValid(s, "yyyyMMdd");
@@ -75,8 +75,8 @@ public final class DateTime {
      * check date string validation with an user defined format.
      * @param s date string you want to check.
      * @param format string representation of the date format. For example, "yyyy-MM-dd".
-     * @return boolean true ³¯Â¥ Çü½ÄÀÌ ¸Â°í, Á¸ÀçÇÏ´Â ³¯Â¥ÀÏ ¶§
-     *                 false ³¯Â¥ Çü½ÄÀÌ ¸ÂÁö ¾Ê°Å³ª, Á¸ÀçÇÏÁö ¾Ê´Â ³¯Â¥ÀÏ ¶§
+     * @return boolean true ï¿½ï¿½Â¥ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Â°ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½Â¥ï¿½ï¿½ ï¿½ï¿½
+     *                 false ï¿½ï¿½Â¥ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ê°Å³ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê´ï¿½ ï¿½ï¿½Â¥ï¿½ï¿½ ï¿½ï¿½
      */
     public static boolean isValid(String s, String format) {
 /*
@@ -211,30 +211,30 @@ public final class DateTime {
     /**
      * return days between two date strings with default defined format.(yyyyMMdd)
      * @param s date string you want to check.
-     * @return int ³¯Â¥ Çü½ÄÀÌ ¸Â°í, Á¸ÀçÇÏ´Â ³¯Â¥ÀÏ ¶§ ¿äÀÏÀ» ¸®ÅÏ
-     *           Çü½ÄÀÌ Àß¸ø µÇ¾ú°Å³ª Á¸ÀçÇÏÁö ¾Ê´Â ³¯Â¥: java.text.ParseException ¹ß»ý
-     *          0: ÀÏ¿äÀÏ (java.util.Calendar.SUNDAY ¿Í ºñ±³)
-     *          1: ¿ù¿äÀÏ (java.util.Calendar.MONDAY ¿Í ºñ±³)
-     *          2: È­¿äÀÏ (java.util.Calendar.TUESDAY ¿Í ºñ±³)
-     *          3: ¼ö¿äÀÏ (java.util.Calendar.WENDESDAY ¿Í ºñ±³)
-     *          4: ¸ñ¿äÀÏ (java.util.Calendar.THURSDAY ¿Í ºñ±³)
-     *          5: ±Ý¿äÀÏ (java.util.Calendar.FRIDAY ¿Í ºñ±³)
-     *          6: Åä¿äÀÏ (java.util.Calendar.SATURDAY ¿Í ºñ±³)
-     * ¿¹) String s = "20000529";
+     * @return int ï¿½ï¿½Â¥ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Â°ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½Â¥ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+     *           ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß¸ï¿½ ï¿½Ç¾ï¿½ï¿½Å³ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê´ï¿½ ï¿½ï¿½Â¥: java.text.ParseException ï¿½ß»ï¿½
+     *          0: ï¿½Ï¿ï¿½ï¿½ï¿½ (java.lang3.Calendar.SUNDAY ï¿½ï¿½ ï¿½ï¿½)
+     *          1: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ (java.lang3.Calendar.MONDAY ï¿½ï¿½ ï¿½ï¿½)
+     *          2: È­ï¿½ï¿½ï¿½ï¿½ (java.lang3.Calendar.TUESDAY ï¿½ï¿½ ï¿½ï¿½)
+     *          3: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ (java.lang3.Calendar.WENDESDAY ï¿½ï¿½ ï¿½ï¿½)
+     *          4: ï¿½ï¿½ï¿½ï¿½ï¿½ (java.lang3.Calendar.THURSDAY ï¿½ï¿½ ï¿½ï¿½)
+     *          5: ï¿½Ý¿ï¿½ï¿½ï¿½ (java.lang3.Calendar.FRIDAY ï¿½ï¿½ ï¿½ï¿½)
+     *          6: ï¿½ï¿½ï¿½ï¿½ï¿½ (java.lang3.Calendar.SATURDAY ï¿½ï¿½ ï¿½ï¿½)
+     * ï¿½ï¿½) String s = "20000529";
      *  int dayOfWeek = whichDay(s, format);
-     *  if (dayOfWeek == java.util.Calendar.MONDAY)
-     *      System.out.println(" ¿ù¿äÀÏ: " + dayOfWeek);
-     *  if (dayOfWeek == java.util.Calendar.TUESDAY)
-     *      System.out.println(" È­¿äÀÏ: " + dayOfWeek);
+     *  if (dayOfWeek == java.lang3.Calendar.MONDAY)
+     *      System.out.println(" ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½: " + dayOfWeek);
+     *  if (dayOfWeek == java.lang3.Calendar.TUESDAY)
+     *      System.out.println(" È­ï¿½ï¿½ï¿½ï¿½: " + dayOfWeek);
      */
     public static int whichDay(String s) throws java.text.ParseException {
         return whichDay(s, "yyyyMMdd");
     }
     /**
      *
-     * ½ÃÀÛÀÏÀÚ¿Í Á¾·áÀÏÀÚ»çÀÌ¿¡ ¿ù¿äÀÏ°ú ÀÏ¿äÀÏÀ» List¿¡ ´Ý¾Æ returnÇÑ´Ù.
+     * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú»ï¿½ï¿½Ì¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½Ï¿ï¿½ï¿½ï¿½ï¿½ï¿½ Listï¿½ï¿½ ï¿½Ý¾ï¿½ returnï¿½Ñ´ï¿½.
      * <P/>
-     * ½ÃÀÛÀÏÀÚ¿Í Á¾·áÀÏÀÚ»çÀÌ¿¡¼­ °¢ ÁÖ°£º° ¿ù¿äÀÏ°ú ÀÏ¿äÀÏÀÇ ³¯Â¥¸¦ List¿¡ ´ã¾Æ¼­ returnÇÕ´Ï´Ù.
+     * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú»ï¿½ï¿½Ì¿ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ö°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½Ï¿ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Â¥ï¿½ï¿½ Listï¿½ï¿½ ï¿½ï¿½Æ¼ï¿½ returnï¿½Õ´Ï´ï¿½.
      *
      * @param startDate
      * @param endDate
@@ -247,7 +247,7 @@ public final class DateTime {
         int dayCount = daysBetween(startDate,endDate);
         String sDay = startDate;
         int whichDay = 0;
-        //±â°£µ¿¾ÈÀÇ ÁÖ ±¸ÇÏ±â
+        //ï¿½â°£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½Ï±ï¿½
         int weekCnt = dayCount/7;
         int weekCnt1 = dayCount % 7;
         if(weekCnt1 > 0) weekCnt++;
@@ -258,16 +258,16 @@ public final class DateTime {
         List al = new ArrayList();
 
         for(int i=0;i<dayCount;i++){
-            //sDay°¡ ¿ù¿äÀÏÀÎÁö È®ÀÎÇÑ´Ù.
+            //sDayï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½ï¿½Ñ´ï¿½.
             whichDay = whichDay(sDay);
             //out.println("saveDayPos"+saveDayPos);
             //out.println("sDay"+sDay);
             //out.println("whichDay"+whichDay+"<br>");
             if(whichDay == 2){
 
-                //¿ù¿äÀÏÀÌ¸é insertStartDate¿¡ ÀúÀå
+                //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì¸ï¿½ insertStartDateï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
                 saveDay[saveDayPos][0] = sDay;
-                //ÀÏ¿äÀÏÀ» ÀúÀåÇÒ¼ö ÀÖµµ·Ï monday mode¸¦ true·Î º¯°æ
+                //ï¿½Ï¿ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ò¼ï¿½ ï¿½Öµï¿½ï¿½ï¿½ monday modeï¿½ï¿½ trueï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
                 monday = true;
                 //out.println(sDay +"is monday <br>");
 
@@ -275,9 +275,9 @@ public final class DateTime {
 
             if(whichDay == 1 && i > 0 && monday == true){
 
-                //ÀÏ¿äÀÏÀÌ¸é insertStartDate¿¡ ÀúÀå
+                //ï¿½Ï¿ï¿½ï¿½ï¿½ï¿½Ì¸ï¿½ insertStartDateï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
                 saveDay[saveDayPos][1] = sDay;
-                //ÀÏ¿äÀÏÀ» ÀúÀåÇÒ¼ö ÀÖµµ·Ï monday mode¸¦ true·Î º¯°æ
+                //ï¿½Ï¿ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ò¼ï¿½ ï¿½Öµï¿½ï¿½ï¿½ monday modeï¿½ï¿½ trueï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
                 monday = false;
                 HashMap hm = new HashMap();
 
@@ -285,7 +285,7 @@ public final class DateTime {
                 hm.put("eDate",saveDay[saveDayPos][1]);
                 al.add( hm );
 
-                //ÀÏ¿äÀÏÀ» Ã£¾ÒÀ¸¹Ç·Î ¿ù¿äÀÏ·Î ÀúÀåÇÏ±â À§ÇØ Áõ°¡ÇÑ´Ù.
+                //ï¿½Ï¿ï¿½ï¿½ï¿½ï¿½ï¿½ Ã£ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï·ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
                 saveDayPos++;
 
             }
@@ -298,21 +298,21 @@ public final class DateTime {
      * return days between two date strings with user defined format.
      * @param s date string you want to check.
      * @param format string representation of the date format. For example, "yyyy-MM-dd".
-     * @return int ³¯Â¥ Çü½ÄÀÌ ¸Â°í, Á¸ÀçÇÏ´Â ³¯Â¥ÀÏ ¶§ ¿äÀÏÀ» ¸®ÅÏ
-     *           Çü½ÄÀÌ Àß¸ø µÇ¾ú°Å³ª Á¸ÀçÇÏÁö ¾Ê´Â ³¯Â¥: java.text.ParseException ¹ß»ý
-     *          0: ÀÏ¿äÀÏ (java.util.Calendar.SUNDAY ¿Í ºñ±³)
-     *          1: ¿ù¿äÀÏ (java.util.Calendar.MONDAY ¿Í ºñ±³)
-     *          2: È­¿äÀÏ (java.util.Calendar.TUESDAY ¿Í ºñ±³)
-     *          3: ¼ö¿äÀÏ (java.util.Calendar.WENDESDAY ¿Í ºñ±³)
-     *          4: ¸ñ¿äÀÏ (java.util.Calendar.THURSDAY ¿Í ºñ±³)
-     *          5: ±Ý¿äÀÏ (java.util.Calendar.FRIDAY ¿Í ºñ±³)
-     *          6: Åä¿äÀÏ (java.util.Calendar.SATURDAY ¿Í ºñ±³)
-     * ¿¹) String s = "2000-05-29";
+     * @return int ï¿½ï¿½Â¥ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Â°ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½Â¥ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+     *           ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß¸ï¿½ ï¿½Ç¾ï¿½ï¿½Å³ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê´ï¿½ ï¿½ï¿½Â¥: java.text.ParseException ï¿½ß»ï¿½
+     *          0: ï¿½Ï¿ï¿½ï¿½ï¿½ (java.lang3.Calendar.SUNDAY ï¿½ï¿½ ï¿½ï¿½)
+     *          1: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ (java.lang3.Calendar.MONDAY ï¿½ï¿½ ï¿½ï¿½)
+     *          2: È­ï¿½ï¿½ï¿½ï¿½ (java.lang3.Calendar.TUESDAY ï¿½ï¿½ ï¿½ï¿½)
+     *          3: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ (java.lang3.Calendar.WENDESDAY ï¿½ï¿½ ï¿½ï¿½)
+     *          4: ï¿½ï¿½ï¿½ï¿½ï¿½ (java.lang3.Calendar.THURSDAY ï¿½ï¿½ ï¿½ï¿½)
+     *          5: ï¿½Ý¿ï¿½ï¿½ï¿½ (java.lang3.Calendar.FRIDAY ï¿½ï¿½ ï¿½ï¿½)
+     *          6: ï¿½ï¿½ï¿½ï¿½ï¿½ (java.lang3.Calendar.SATURDAY ï¿½ï¿½ ï¿½ï¿½)
+     * ï¿½ï¿½) String s = "2000-05-29";
      *  int dayOfWeek = whichDay(s, "yyyy-MM-dd");
-     *  if (dayOfWeek == java.util.Calendar.MONDAY)
-     *      System.out.println(" ¿ù¿äÀÏ: " + dayOfWeek);
-     *  if (dayOfWeek == java.util.Calendar.TUESDAY)
-     *      System.out.println(" È­¿äÀÏ: " + dayOfWeek);
+     *  if (dayOfWeek == java.lang3.Calendar.MONDAY)
+     *      System.out.println(" ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½: " + dayOfWeek);
+     *  if (dayOfWeek == java.lang3.Calendar.TUESDAY)
+     *      System.out.println(" È­ï¿½ï¿½ï¿½ï¿½: " + dayOfWeek);
      */
 
     public static int whichDay(String s, String format) throws java.text.ParseException {
@@ -329,8 +329,8 @@ public final class DateTime {
      * return days between two date strings with default defined format.("yyyyMMdd")
      * @param String from date string
      * @param String to date string
-     * @return int ³¯Â¥ Çü½ÄÀÌ ¸Â°í, Á¸ÀçÇÏ´Â ³¯Â¥ÀÏ ¶§ 2°³ ÀÏÀÚ »çÀÌÀÇ ³ªÀÌ ¸®ÅÏ
-     *           Çü½ÄÀÌ Àß¸ø µÇ¾ú°Å³ª Á¸ÀçÇÏÁö ¾Ê´Â ³¯Â¥: java.text.ParseException ¹ß»ý
+     * @return int ï¿½ï¿½Â¥ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Â°ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½Â¥ï¿½ï¿½ ï¿½ï¿½ 2ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+     *           ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß¸ï¿½ ï¿½Ç¾ï¿½ï¿½Å³ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê´ï¿½ ï¿½ï¿½Â¥: java.text.ParseException ï¿½ß»ï¿½
      */
     public static int daysBetween(String from, String to) throws java.text.ParseException {
         return daysBetween(from, to, "yyyyMMdd");
@@ -340,8 +340,8 @@ public final class DateTime {
      * return days between two date strings with user defined format.
      * @param String from date string
      * @param String to date string
-     * @return int ³¯Â¥ Çü½ÄÀÌ ¸Â°í, Á¸ÀçÇÏ´Â ³¯Â¥ÀÏ ¶§ 2°³ ÀÏÀÚ »çÀÌÀÇ ÀÏÀÚ ¸®ÅÏ
-     *           Çü½ÄÀÌ Àß¸ø µÇ¾ú°Å³ª Á¸ÀçÇÏÁö ¾Ê´Â ³¯Â¥: java.text.ParseException ¹ß»ý
+     * @return int ï¿½ï¿½Â¥ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Â°ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½Â¥ï¿½ï¿½ ï¿½ï¿½ 2ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+     *           ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß¸ï¿½ ï¿½Ç¾ï¿½ï¿½Å³ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê´ï¿½ ï¿½ï¿½Â¥: java.text.ParseException ï¿½ß»ï¿½
      */
     public static int daysBetween(String from, String to, String format) throws java.text.ParseException {
         java.text.SimpleDateFormat formatter =
@@ -359,8 +359,8 @@ public final class DateTime {
      * return age between two date strings with default defined format.("yyyyMMdd")
      * @param String from date string
      * @param String to date string
-     * @return int ³¯Â¥ Çü½ÄÀÌ ¸Â°í, Á¸ÀçÇÏ´Â ³¯Â¥ÀÏ ¶§ 2°³ ÀÏÀÚ »çÀÌÀÇ ³ªÀÌ ¸®ÅÏ
-     *           Çü½ÄÀÌ Àß¸ø µÇ¾ú°Å³ª Á¸ÀçÇÏÁö ¾Ê´Â ³¯Â¥: java.text.ParseException ¹ß»ý
+     * @return int ï¿½ï¿½Â¥ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Â°ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½Â¥ï¿½ï¿½ ï¿½ï¿½ 2ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+     *           ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß¸ï¿½ ï¿½Ç¾ï¿½ï¿½Å³ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê´ï¿½ ï¿½ï¿½Â¥: java.text.ParseException ï¿½ß»ï¿½
      */
     public static int ageBetween(String from, String to) throws java.text.ParseException {
         return ageBetween(from, to, "yyyyMMdd");
@@ -371,8 +371,8 @@ public final class DateTime {
      * @param String from date string
      * @param String to date string
      * @param format string representation of the date format. For example, "yyyy-MM-dd".
-     * @return int ³¯Â¥ Çü½ÄÀÌ ¸Â°í, Á¸ÀçÇÏ´Â ³¯Â¥ÀÏ ¶§ 2°³ ÀÏÀÚ »çÀÌÀÇ ³ªÀÌ ¸®ÅÏ
-     *           Çü½ÄÀÌ Àß¸ø µÇ¾ú°Å³ª Á¸ÀçÇÏÁö ¾Ê´Â ³¯Â¥: java.text.ParseException ¹ß»ý
+     * @return int ï¿½ï¿½Â¥ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Â°ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½Â¥ï¿½ï¿½ ï¿½ï¿½ 2ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+     *           ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß¸ï¿½ ï¿½Ç¾ï¿½ï¿½Å³ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê´ï¿½ ï¿½ï¿½Â¥: java.text.ParseException ï¿½ß»ï¿½
      */
     public static int ageBetween(String from, String to, String format) throws java.text.ParseException {
         return (int)(daysBetween(from, to, format) / 365 );
@@ -381,9 +381,9 @@ public final class DateTime {
     /**
      * return add day to date strings
      * @param String date string
-     * @param int ´õÇÒ ÀÏ¼ö
-     * @return int ³¯Â¥ Çü½ÄÀÌ ¸Â°í, Á¸ÀçÇÏ´Â ³¯Â¥ÀÏ ¶§ ÀÏ¼ö ´õÇÏ±â
-     *           Çü½ÄÀÌ Àß¸ø µÇ¾ú°Å³ª Á¸ÀçÇÏÁö ¾Ê´Â ³¯Â¥: java.text.ParseException ¹ß»ý
+     * @param int ï¿½ï¿½ï¿½ï¿½ ï¿½Ï¼ï¿½
+     * @return int ï¿½ï¿½Â¥ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Â°ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½Â¥ï¿½ï¿½ ï¿½ï¿½ ï¿½Ï¼ï¿½ ï¿½ï¿½ï¿½Ï±ï¿½
+     *           ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß¸ï¿½ ï¿½Ç¾ï¿½ï¿½Å³ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê´ï¿½ ï¿½ï¿½Â¥: java.text.ParseException ï¿½ß»ï¿½
      */
     public static String addDays(String s, int day) throws java.text.ParseException {
         return addDays(s, day, "yyyyMMdd");
@@ -391,9 +391,9 @@ public final class DateTime {
     /**
      * return add day to date strings
      * @param String date string
-     * @param int ´õÇÒ ÀÏ¼ö
-     * @return int ³¯Â¥ Çü½ÄÀÌ ¸Â°í, Á¸ÀçÇÏ´Â ³¯Â¥ÀÏ ¶§ ÀÏ¼ö Â÷°¨ÇÏ±â
-     *           Çü½ÄÀÌ Àß¸ø µÇ¾ú°Å³ª Á¸ÀçÇÏÁö ¾Ê´Â ³¯Â¥: java.text.ParseException ¹ß»ý
+     * @param int ï¿½ï¿½ï¿½ï¿½ ï¿½Ï¼ï¿½
+     * @return int ï¿½ï¿½Â¥ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Â°ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½Â¥ï¿½ï¿½ ï¿½ï¿½ ï¿½Ï¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½
+     *           ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß¸ï¿½ ï¿½Ç¾ï¿½ï¿½Å³ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê´ï¿½ ï¿½ï¿½Â¥: java.text.ParseException ï¿½ß»ï¿½
      */
     public static String minusDays(String s, int day) throws java.text.ParseException {
         return minusDays(s, day, "yyyyMMdd");
@@ -402,10 +402,10 @@ public final class DateTime {
     /**
      * return add day to date strings with user defined format.
      * @param String date string
-     * @param int ´õÇÒ ÃÊ
+     * @param int ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
      * @param format string representation of the date format. For example, "yyyy-MM-dd".
-     * @return int ³¯Â¥ Çü½ÄÀÌ ¸Â°í, Á¸ÀçÇÏ´Â ³¯Â¥ÀÏ ¶§ ÀÏ¼ö ´õÇÏ±â
-     *           Çü½ÄÀÌ Àß¸ø µÇ¾ú°Å³ª Á¸ÀçÇÏÁö ¾Ê´Â ³¯Â¥: java.text.ParseException ¹ß»ý
+     * @return int ï¿½ï¿½Â¥ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Â°ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½Â¥ï¿½ï¿½ ï¿½ï¿½ ï¿½Ï¼ï¿½ ï¿½ï¿½ï¿½Ï±ï¿½
+     *           ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß¸ï¿½ ï¿½Ç¾ï¿½ï¿½Å³ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê´ï¿½ ï¿½ï¿½Â¥: java.text.ParseException ï¿½ß»ï¿½
      */
     public static String addSeconds(String s, int day, String format) throws java.text.ParseException{
         java.text.SimpleDateFormat formatter =
@@ -419,10 +419,10 @@ public final class DateTime {
     /**
      * return add day to date strings with user defined format.
      * @param String date string
-     * @param int ´õÇÒ ÀÏ¼ö
+     * @param int ï¿½ï¿½ï¿½ï¿½ ï¿½Ï¼ï¿½
      * @param format string representation of the date format. For example, "yyyy-MM-dd".
-     * @return int ³¯Â¥ Çü½ÄÀÌ ¸Â°í, Á¸ÀçÇÏ´Â ³¯Â¥ÀÏ ¶§ ÀÏ¼ö ´õÇÏ±â
-     *           Çü½ÄÀÌ Àß¸ø µÇ¾ú°Å³ª Á¸ÀçÇÏÁö ¾Ê´Â ³¯Â¥: java.text.ParseException ¹ß»ý
+     * @return int ï¿½ï¿½Â¥ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Â°ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½Â¥ï¿½ï¿½ ï¿½ï¿½ ï¿½Ï¼ï¿½ ï¿½ï¿½ï¿½Ï±ï¿½
+     *           ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß¸ï¿½ ï¿½Ç¾ï¿½ï¿½Å³ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê´ï¿½ ï¿½ï¿½Â¥: java.text.ParseException ï¿½ß»ï¿½
      */
     public static String addDays(String s, int day, String format) throws java.text.ParseException{
         java.text.SimpleDateFormat formatter =
@@ -435,10 +435,10 @@ public final class DateTime {
     /**
      * return add day to date strings with user defined format.
      * @param String date string
-     * @param int ´õÇÒ ÀÏ¼ö
+     * @param int ï¿½ï¿½ï¿½ï¿½ ï¿½Ï¼ï¿½
      * @param format string representation of the date format. For example, "yyyy-MM-dd".
-     * @return int ³¯Â¥ Çü½ÄÀÌ ¸Â°í, Á¸ÀçÇÏ´Â ³¯Â¥ÀÏ ¶§ ÀÏ¼ö Â÷°¨ÇÏ±â
-     *           Çü½ÄÀÌ Àß¸ø µÇ¾ú°Å³ª Á¸ÀçÇÏÁö ¾Ê´Â ³¯Â¥: java.text.ParseException ¹ß»ý
+     * @return int ï¿½ï¿½Â¥ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Â°ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½Â¥ï¿½ï¿½ ï¿½ï¿½ ï¿½Ï¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½
+     *           ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß¸ï¿½ ï¿½Ç¾ï¿½ï¿½Å³ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê´ï¿½ ï¿½ï¿½Â¥: java.text.ParseException ï¿½ß»ï¿½
      */
     public static String minusDays(String s, int day, String format) throws java.text.ParseException{
         java.text.SimpleDateFormat formatter =
@@ -452,9 +452,9 @@ public final class DateTime {
     /**
      * return add month to date strings
      * @param String date string
-     * @param int ´õÇÒ ¿ù¼ö
-     * @return int ³¯Â¥ Çü½ÄÀÌ ¸Â°í, Á¸ÀçÇÏ´Â ³¯Â¥ÀÏ ¶§ ¿ù¼ö ´õÇÏ±â
-     *           Çü½ÄÀÌ Àß¸ø µÇ¾ú°Å³ª Á¸ÀçÇÏÁö ¾Ê´Â ³¯Â¥: java.text.ParseException ¹ß»ý
+     * @param int ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+     * @return int ï¿½ï¿½Â¥ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Â°ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½Â¥ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï±ï¿½
+     *           ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß¸ï¿½ ï¿½Ç¾ï¿½ï¿½Å³ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê´ï¿½ ï¿½ï¿½Â¥: java.text.ParseException ï¿½ß»ï¿½
      */
     public static String addMonths(String s, int month) throws Exception {
         return addMonths(s, month, "yyyyMMdd");
@@ -463,10 +463,10 @@ public final class DateTime {
     /**
      * return add month to date strings with user defined format.
      * @param String date string
-     * @param int ´õÇÒ ¿ù¼ö
+     * @param int ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
      * @param format string representation of the date format. For example, "yyyy-MM-dd".
-     * @return int ³¯Â¥ Çü½ÄÀÌ ¸Â°í, Á¸ÀçÇÏ´Â ³¯Â¥ÀÏ ¶§ ¿ù¼ö ´õÇÏ±â
-     *           Çü½ÄÀÌ Àß¸ø µÇ¾ú°Å³ª Á¸ÀçÇÏÁö ¾Ê´Â ³¯Â¥: java.text.ParseException ¹ß»ý
+     * @return int ï¿½ï¿½Â¥ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Â°ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½Â¥ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï±ï¿½
+     *           ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß¸ï¿½ ï¿½Ç¾ï¿½ï¿½Å³ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê´ï¿½ ï¿½ï¿½Â¥: java.text.ParseException ï¿½ß»ï¿½
      */
     public static String addMonths(String s, int addMonth, String format) throws Exception {
         java.text.SimpleDateFormat formatter =
@@ -559,7 +559,7 @@ public final class DateTime {
         result += (toMonth - fromMonth);
 
 //        if (((toDay - fromDay) < 0) ) result += fromDate.compareTo(toDate);
-        // ceil°ú floorÀÇ È¿°ú
+        // ceilï¿½ï¿½ floorï¿½ï¿½ È¿ï¿½ï¿½
         if (((toDay - fromDay) > 0) ) result += toDate.compareTo(fromDate);
 
         return result;
@@ -615,10 +615,10 @@ public final class DateTime {
         return day;
     }
     /**
-     * ¹®ÀÚ¿­À» ¹è¿­·Î ¸®ÅÏ
-     * @param txt ¹è¿­·Î ¸®ÅÏÇÒ ¹®ÀÚ¿­ ex) a,b,c
-     * @param deli ±¸ºÐÀÚ ex) ,
-     * @return ¹è¿­ ex) a b c °¢°¢ ¹è¿­
+     * ï¿½ï¿½ï¿½Ú¿ï¿½ï¿½ï¿½ ï¿½è¿­ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+     * @param txt ï¿½è¿­ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ú¿ï¿½ ex) a,b,c
+     * @param deli ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ex) ,
+     * @return ï¿½è¿­ ex) a b c ï¿½ï¿½ï¿½ï¿½ ï¿½è¿­
      */
     public static String[] getArrayFromString(String txt, String deli) {
         String str = txt;
@@ -630,41 +630,41 @@ public final class DateTime {
     }
     /**
      *
-     * ±ÝÁÖ¿¡ ÇØ´çÇÏ´Â ¿ù¿äÀÏ ±¸ÇÏ±â
+     * ï¿½ï¿½ï¿½Ö¿ï¿½ ï¿½Ø´ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï±ï¿½
      * <P/>
-     * ±ÝÁÖ¿¡ ÇØ´çÇÏ´Â ¿ù¿äÀÏ ±¸ÇÏ±â
+     * ï¿½ï¿½ï¿½Ö¿ï¿½ ï¿½Ø´ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï±ï¿½
      *
      * @return
      * @throws ParseException
      */
     public static String getThisWeekMondayDate() throws ParseException {
-        //±ÝÀÏ³¯Â¥±¸ÇÏ±â
+        //ï¿½ï¿½ï¿½Ï³ï¿½Â¥ï¿½ï¿½ï¿½Ï±ï¿½
         String curDate = getDateString();
-        //±ÝÀÏ³¯Â¥°¡ ¿ù¿äÀÏÀÌ¸é ±ÝÀÏ³¯Â¥¸¦ ¸®ÅÏ, ±ÝÀÏ³¯Â¥°¡ È­¿äÀÏÀÌ¸é -1, ¼ö¿äÀÏ-2, ¸ñ-3, ±Ý-4, Åä-5, ÀÏ-6
+        //ï¿½ï¿½ï¿½Ï³ï¿½Â¥ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½Ï³ï¿½Â¥ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½Ï³ï¿½Â¥ï¿½ï¿½ È­ï¿½ï¿½ï¿½ï¿½ï¿½Ì¸ï¿½ -1, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½-2, ï¿½ï¿½-3, ï¿½ï¿½-4, ï¿½ï¿½-5, ï¿½ï¿½-6
         String mondayDate = curDate;
-        //sDay°¡ ¿ù¿äÀÏÀÎÁö È®ÀÎÇÑ´Ù.
+        //sDayï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½ï¿½Ñ´ï¿½.
         int whichDay = whichDay(curDate);
-        //È­¿äÀÏÀÌ¸é
+        //È­ï¿½ï¿½ï¿½ï¿½ï¿½Ì¸ï¿½
         if(whichDay == 3){
             mondayDate = minusDays(curDate,1);
         }
-        //¼ö¿äÀÏÀÌ¸é
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì¸ï¿½
         if(whichDay == 4){
             mondayDate = minusDays(curDate,2);
         }
-        //¸ñ¿äÀÏÀÌ¸é
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì¸ï¿½
         if(whichDay == 5){
             mondayDate = minusDays(curDate,3);
         }
-        //±Ý¿äÀÏÀÌ¸é
+        //ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½Ì¸ï¿½
         if(whichDay == 6){
             mondayDate = minusDays(curDate,4);
         }
-        //Åä¿äÀÏÀÌ¸é
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì¸ï¿½
         if(whichDay == 7){
             mondayDate = minusDays(curDate,5);
         }
-        //ÀÏ¿äÀÏÀÌ¸é
+        //ï¿½Ï¿ï¿½ï¿½ï¿½ï¿½Ì¸ï¿½
         if(whichDay == 1){
             mondayDate = minusDays(curDate,6);
         }
@@ -673,42 +673,42 @@ public final class DateTime {
     }
     /**
      *
-     * ±ÝÁÖ¿¡ ÇØ´çÇÏ´Â ¿ù¿äÀÏ ±¸ÇÏ±â
+     * ï¿½ï¿½ï¿½Ö¿ï¿½ ï¿½Ø´ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï±ï¿½
      * <P/>
-     * ±ÝÁÖ¿¡ ÇØ´çÇÏ´Â ¿ù¿äÀÏ ±¸ÇÏ±â
+     * ï¿½ï¿½ï¿½Ö¿ï¿½ ï¿½Ø´ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï±ï¿½
      *
      * @return
      * @throws ParseException
      */
     public static String getThisWeekSundayDate() throws ParseException {
-        //±ÝÀÏ³¯Â¥±¸ÇÏ±â
+        //ï¿½ï¿½ï¿½Ï³ï¿½Â¥ï¿½ï¿½ï¿½Ï±ï¿½
         String curDate = getDateString();
-        //±ÝÀÏ³¯Â¥°¡ ÀÏ¿äÀÏÀÌ¸é ±ÝÀÏ³¯Â¥¸¦ ¸®ÅÏ, ±ÝÀÏ³¯Â¥°¡ ¿ù¿äÀÏÀÌ¸é +6, È­+5,¼ö+4, ¸ñ+3, ±Ý+2, Åä+1
+        //ï¿½ï¿½ï¿½Ï³ï¿½Â¥ï¿½ï¿½ ï¿½Ï¿ï¿½ï¿½ï¿½ï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½Ï³ï¿½Â¥ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½Ï³ï¿½Â¥ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì¸ï¿½ +6, È­+5,ï¿½ï¿½+4, ï¿½ï¿½+3, ï¿½ï¿½+2, ï¿½ï¿½+1
         String returnDate = curDate;
-        //sDay°¡ ÀÏ¿äÀÏÀÎÁö È®ÀÎÇÑ´Ù.
+        //sDayï¿½ï¿½ ï¿½Ï¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½ï¿½Ñ´ï¿½.
         int whichDay = whichDay(curDate);
         //System.out.println(whichDay);
-        //¿ù¿äÀÏÀÌ¸é
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì¸ï¿½
         if(whichDay == 2){
             returnDate = addDays(curDate,6);
         }
-        //È­¿äÀÏÀÌ¸é
+        //È­ï¿½ï¿½ï¿½ï¿½ï¿½Ì¸ï¿½
         if(whichDay == 3){
             returnDate = addDays(curDate,5);
         }
-        //¼ö¿äÀÏÀÌ¸é
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì¸ï¿½
         if(whichDay == 4){
             returnDate = addDays(curDate,4);
         }
-        //¸ñ¿äÀÏÀÌ¸é
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì¸ï¿½
         if(whichDay == 5){
             returnDate = addDays(curDate,3);
         }
-        //±Ý¿äÀÏÀÌ¸é
+        //ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½Ì¸ï¿½
         if(whichDay == 6){
             returnDate = addDays(curDate,2);
         }
-        //Åä¿äÀÏÀÌ¸é
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì¸ï¿½
         if(whichDay == 7){
             returnDate = addDays(curDate,1);
         }
@@ -718,13 +718,13 @@ public final class DateTime {
 
 
     /**
-     * ÁÖ¾îÁø Date¸¦ patternÈ­ µÈ ¹®ÀÚ¿­·Î ¹ÝÈ¯ÇÑ´Ù.
+     * ï¿½Ö¾ï¿½ï¿½ï¿½ Dateï¿½ï¿½ patternÈ­ ï¿½ï¿½ ï¿½ï¿½ï¿½Ú¿ï¿½ï¿½ï¿½ ï¿½ï¿½È¯ï¿½Ñ´ï¿½.
      *
      * @param date
-     *            ÆÐÅÏÈ­ÇÒ ³¯Â¥
+     *            ï¿½ï¿½ï¿½ï¿½È­ï¿½ï¿½ ï¿½ï¿½Â¥
      * @param pattern
-     *            string ÆÐÅÏ
-     * @return string ÆÐÅÏÈ­µÈ ³¯Â¥ ¹®ÀÚ¿­
+     *            string ï¿½ï¿½ï¿½ï¿½
+     * @return string ï¿½ï¿½ï¿½ï¿½È­ï¿½ï¿½ ï¿½ï¿½Â¥ ï¿½ï¿½ï¿½Ú¿ï¿½
      */
     public static String format(Date date, String pattern) {
         try {
@@ -736,8 +736,8 @@ public final class DateTime {
     }
 
     /**
-     * java.util.Date Å¬·¡½º¸¦ yyyy-MM-dd Æ÷¸ËÀÇ StringÀ¸·Î º¯È¯ÇÑ´Ù. µ¥ÀÌÅ¸º£ÀÌ½º ÄÃ·³ÀÌ NULLÀÎ°æ¿ì¿¡´Â
-     * ""°ªÀ» ¸®ÅÏÇÑ´Ù.(with SqlMap.xml)
+     * java.lang3.Date Å¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ yyyy-MM-dd ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Stringï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯ï¿½Ñ´ï¿½. ï¿½ï¿½ï¿½ï¿½Å¸ï¿½ï¿½ï¿½Ì½ï¿½ ï¿½Ã·ï¿½ï¿½ï¿½ NULLï¿½Î°ï¿½ì¿¡ï¿½ï¿½
+     * ""ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.(with SqlMap.xml)
      *
      * @param date
      * @return
@@ -750,7 +750,7 @@ public final class DateTime {
         return str;
     }
 
-    /** ¹®ÀÚ¿­À» ³¯Â¥·Î
+    /** ï¿½ï¿½ï¿½Ú¿ï¿½ï¿½ï¿½ ï¿½ï¿½Â¥ï¿½ï¿½
      *
      * @param value
      * @param pattern
@@ -774,11 +774,11 @@ public final class DateTime {
 
 
     /**
-     * ÁöÁ¤µÈ ÇØ´ç¿ùÀÇ ½ÃÀÛÀÏÀÚ¿Í ¸¶Áö¸· ÀÏÀÚ¸¦ Date ÇüÀ¸·Î ¸®ÅÏÇÑ´Ù.
+     * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ø´ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ú¸ï¿½ Date ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
      * @param date Date
-     * @param calendarField ÁöÁ¤µÈ ÇØ´ç¿ù
-     * @param amount +- µÉ ¿ù
-     * @param flg 1 : ÇØ´ç¿ùÀÇ ½ÃÀÛ ÀÏÀÚ, 2 : ÇØ´ç¿ùÀÇ ¸¶Áö¸· ÀÏÀÚ, 3 : ÇØ´ç¿ùÀÇ ¸¶Áö¸· ÀÏÀÚ
+     * @param calendarField ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ø´ï¿½ï¿½
+     * @param amount +- ï¿½ï¿½ ï¿½ï¿½
+     * @param flg 1 : ï¿½Ø´ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, 2 : ï¿½Ø´ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, 3 : ï¿½Ø´ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
      * @return Date
      */
     public static Date add(Date date, int calendarField, int amount, int flg) {
@@ -804,10 +804,10 @@ public final class DateTime {
     }
 
     /**
-     * ÁöÁ¤µÈ ÇØ´ç¿ùÀÇ ½ÃÀÛÀÏÀÚ¿Í ¸¶Áö¸· ÀÏÀÚ¸¦ Date ÇüÀ¸·Î ¸®ÅÏÇÑ´Ù.
+     * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ø´ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ú¸ï¿½ Date ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
      * @param date Date
-     * @param amount +- µÉ ¿ù
-     * @param flg 1 : ÇØ´ç¿ùÀÇ ½ÃÀÛ ÀÏÀÚ, 2 : ÇØ´ç¿ùÀÇ ¸¶Áö¸· ÀÏÀÚ, 3 : ÇØ´ç¿ùÀÇ ¸¶Áö¸· ÀÏÀÚ
+     * @param amount +- ï¿½ï¿½ ï¿½ï¿½
+     * @param flg 1 : ï¿½Ø´ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, 2 : ï¿½Ø´ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, 3 : ï¿½Ø´ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
      * @return Date
      */
     public static Date addMonths(Date date, int amount, int flg) {
