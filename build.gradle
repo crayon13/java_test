@@ -41,8 +41,6 @@ dependencies {
     runtimeOnly 'mysql:mysql-connector-java'
     annotationProcessor 'org.projectlombok:lombok'
 
-
-
     compile 'org.projectlombok:lombok:1.16.8'
     compile 'com.google.http-client:google-http-client-gson:1.21.0'
     compile 'com.google.code.gson:gson:2.2.2'
