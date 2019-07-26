@@ -40,7 +40,7 @@ dependencies {
     runtimeOnly 'com.h2database:h2'
     runtimeOnly 'mysql:mysql-connector-java'
     annotationProcessor 'org.projectlombok:lombok'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
 
 
     compile 'org.projectlombok:lombok:1.16.8'
@@ -54,6 +54,13 @@ dependencies {
     compile 'net.sf.json-lib:json-lib:1.1:jdk13'
     compile group: 'org.imgscalr', name: 'imgscalr-lib', version: '4.2'
 
+
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude module: 'junit'
+    }
+    testImplementation('org.junit.jupiter:junit-jupiter-api:5.2.0')
+    testCompile('org.junit.jupiter:junit-jupiter-params:5.2.0')
+    testRuntime('org.junit.jupiter:junit-jupiter-engine:5.2.0')
 }
 
 dependencyManagement {
