@@ -1,16 +1,14 @@
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TryCatchTest {
 
     @Test
     public void returnTest() {
-        assertThat(returnFianlly(), is("3"));
-        assertThat(returnGeneral(), is("3"));
-        assertThat(returnTry(), is("3"));
+        assertEquals(returnFianlly(),"3");
+        assertEquals(returnGeneral(),"3");
+        assertEquals(returnTry(),"3");
     }
 
 

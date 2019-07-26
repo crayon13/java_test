@@ -47,7 +47,7 @@ public class StringUtilsTest {
 
         assertThat(
             StringUtils.isNoneEmpty(testString, testString1, testString2, testString3)
-        ).isTrue();
+        ).isFalse();
     }
 
     @Test
@@ -73,7 +73,7 @@ public class StringUtilsTest {
 
         assertThat(
             StringUtils.isNoneBlank(testString, testString1, testString2, testString3)
-        ).isTrue();
+        ).isFalse();
     }
 
 

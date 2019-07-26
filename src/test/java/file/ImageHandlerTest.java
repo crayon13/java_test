@@ -1,6 +1,6 @@
 package file;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -9,8 +9,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class ImageHandlerTest {
     @Test
@@ -36,8 +35,8 @@ public class ImageHandlerTest {
 
     @Test
     public void getImageCutNumberTest() {
-        assertThat( getImageCutNumber(960, 1000), is(1));
-        assertThat( getImageCutNumber(960, 1001), is(2));
+        assertThat( getImageCutNumber(960, 1000)).isEqualTo(1);
+        assertThat( getImageCutNumber(960, 1001)).isEqualTo(2);
     }
 
     private List<String> getDimsImageUrlList(String imagePath, int realWidth, int realHeight) {

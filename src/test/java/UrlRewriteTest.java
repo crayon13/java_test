@@ -1,18 +1,19 @@
 import org.apache.commons.lang3.StringUtils;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import static org.springframework.test.util.AssertionErrors.assertTrue;
+
 public class UrlRewriteTest {
     URL testUrl;
     URL expectUrl;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         testUrl = null;
         expectUrl = null;
@@ -24,7 +25,7 @@ public class UrlRewriteTest {
         setTestUrl("http://i.011st.com/11RoL/pd/18/3/2/6/5/5/7/eSSGO/SD2129326557.jpg,/pd/2018/11/JiziQ/E_460.png;g=1;off=%2B15%2B15;fixSz=720x360");
         setExpectUrl("http://nrol.11st.co.kr/11st/rols.jpg?bdSz=720x360&prdImgSz=720x360&emblImgSz=130x130!&prdImg=/pd/18/3/2/6/5/5/7/eSSGO/SD2129326557.jpg&sz=720x360&emblImg=/pd/2018/11/JiziQ/E_460.png&g=1&off=%2B15%2B15");
 
-        Assert.assertTrue("resultUrl : " + getResultUrl(testUrl), compare());
+        assertTrue("resultUrl : " + getResultUrl(testUrl), compare());
     }
 
     @Test
@@ -32,7 +33,7 @@ public class UrlRewriteTest {
         setTestUrl("http://i.011st.com/11RoL/pd/18/3/2/6/5/5/7/eSSGO/SD2129326557.jpg,/pd/2018/11/JiziQ/E_460.png;g=1;off=%2B15%2B15");
         setExpectUrl("http://nrol.11st.co.kr/11st/rols.jpg?bdSz=600x600&prdImgSz=600x600&emblImgSz=130x130!&prdImg=/pd/18/3/2/6/5/5/7/eSSGO/SD2129326557.jpg&emblImg=/pd/2018/11/JiziQ/E_460.png&g=1&off=%2B15%2B15");
 
-        Assert.assertTrue("resultUrl : " + getResultUrl(testUrl), compare());
+        assertTrue("resultUrl : " + getResultUrl(testUrl), compare());
     }
 
     private boolean compare() {

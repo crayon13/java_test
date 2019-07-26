@@ -1,12 +1,12 @@
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import java.io.ObjectStreamClass;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
-import static org.hamcrest.CoreMatchers.is;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
 public class EnumTest {
@@ -15,15 +15,15 @@ public class EnumTest {
     public void FileWriteModeTest() {
         int given = 0;
 
-        Assert.assertTrue(FileWriteMode.DIRECT_FILE_WRITE.equals(0));
-        Assert.assertTrue(FileWriteMode.DIRECT_FILE_WRITE.name().equals("DIRECT_FILE_WRITE"));
+        assertTrue(FileWriteMode.DIRECT_FILE_WRITE.equals(0));
+        assertTrue(FileWriteMode.DIRECT_FILE_WRITE.name().equals("DIRECT_FILE_WRITE"));
     }
 
     @Test
     public void RealGeneratorServerTest() {
-        Assert.assertTrue(RealGeneratorServer.D1.getHostNames().contains("11DEPLOYb-statR01.br.skp"));
-        Assert.assertFalse(RealGeneratorServer.D2.getHostNames().contains("11DEPLOYb-statR01.br.skp"));
-        Assert.assertTrue(RealGeneratorServer.D2.getHostNames().contains("tmbatch1"));
+        assertTrue(RealGeneratorServer.D1.getHostNames().contains("11DEPLOYb-statR01.br.skp"));
+        assertFalse(RealGeneratorServer.D2.getHostNames().contains("11DEPLOYb-statR01.br.skp"));
+        assertTrue(RealGeneratorServer.D2.getHostNames().contains("tmbatch1"));
     }
 
 
@@ -37,18 +37,18 @@ public class EnumTest {
             realGeneratorServer = RealGeneratorServer.D2;
         }
 
-        Assert.assertThat(realGeneratorServer, is(RealGeneratorServer.D2));
+        assertEquals(realGeneratorServer, RealGeneratorServer.D2);
 
 
     }
 
     @Test
     public void serverZoneTest() {
-        Assert.assertThat(ServerZone.findByHostName("vfrontbatch01"), is(ServerZone.D2D3));
-        Assert.assertThat(ServerZone.findByHostName("aa"), is(ServerZone.DEV));
+        assertEquals(ServerZone.findByHostName("vfrontbatch01"), ServerZone.D2D3);
+        assertEquals(ServerZone.findByHostName("aa"), ServerZone.DEV);
 
-        Assert.assertThat(ServerZone.findSlackChannelByHostName("vfrontbatch01")
-                , is(ServerZone.D2D3.slackChannel));
+        assertEquals(ServerZone.findSlackChannelByHostName("vfrontbatch01")
+                , ServerZone.D2D3.slackChannel);
 
     }
 
@@ -116,7 +116,7 @@ public class EnumTest {
         }
 
         serverZone = ServerZone.get("aa");
-        Assert.assertThat(Objects.isNull(serverZone), is(true));
+        assertEquals(Objects.isNull(serverZone), true);
 
         if ( Objects.isNull(serverZone) ) {
 

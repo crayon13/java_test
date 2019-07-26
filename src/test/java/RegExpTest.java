@@ -1,53 +1,53 @@
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class RegExpTest {
 
     @Test
     public void imageUrlFindTest() {
-        assertThat(isValidImageUrl("http://i.011st.com/a.jpg"), is(true));
-        assertThat(isValidImageUrl("https://i.011st.com/a.jpg"), is(true));
-        assertThat(isValidImageUrl("http://image.11st.co.kr/a.jpg"), is(true));
-        assertThat(isValidImageUrl("https://image.11st.co.kr/a.jpg"), is(true));
+        assertTrue(isValidImageUrl("http://i.011st.com/a.jpg"));
+        assertTrue(isValidImageUrl("https://i.011st.com/a.jpg"));
+        assertTrue(isValidImageUrl("http://image.11st.co.kr/a.jpg"));
+        assertTrue(isValidImageUrl("https://image.11st.co.kr/a.jpg"));
 
-        assertThat(isValidImageUrl("http://image2.11st.co.kr/a.jpg"), is(false));
-        assertThat(isValidImageUrl("https://iamge2.11st.co.kr/a.jpg"), is(false));
+        assertFalse(isValidImageUrl("http://image2.11st.co.kr/a.jpg"));
+        assertFalse(isValidImageUrl("https://iamge2.11st.co.kr/a.jpg"));
 
-        assertThat(isValidImageUrl("abc/https://image.11st.co.kr/a.jpg"), is(false));
+        assertFalse(isValidImageUrl("abc/https://image.11st.co.kr/a.jpg"));
     }
 
     @Test
     public void replaceTest() {
         try {
-            assertThat(replaceImageUrl("http://i.011st.com/a.jpg"), is("/a.jpg"));
+            assertEquals(replaceImageUrl("http://i.011st.com/a.jpg"), "/a.jpg");
         } catch (Exception e) {
             e.printStackTrace();
         }
         try {
-            assertThat(replaceImageUrl("https://i.011st.com/a.jpg"), is("/a.jpg"));
+            assertEquals(replaceImageUrl("https://i.011st.com/a.jpg"),"/a.jpg");
         } catch (Exception e) {
             e.printStackTrace();
         }
         try {
-            assertThat(replaceImageUrl("http://image.11st.co.kr/a.jpg"), is("/a.jpg"));
+            assertEquals(replaceImageUrl("http://image.11st.co.kr/a.jpg"),"/a.jpg");
         } catch (Exception e) {
             e.printStackTrace();
         }
         try {
-            assertThat(replaceImageUrl("https://image.11st.co.kr/a.jpg"), is("/a.jpg"));
+            assertEquals(replaceImageUrl("https://image.11st.co.kr/a.jpg"),"/a.jpg");
         } catch (Exception e) {
             e.printStackTrace();
         }
 
 
         try {
-            assertThat(replaceImageUrl("https://image2.11st.co.kr/a.jpg"), is("/a.jpg"));
+            assertEquals(replaceImageUrl("https://image2.11st.co.kr/a.jpg"),"/a.jpg");
         } catch (Exception e) {
             e.printStackTrace();
         }

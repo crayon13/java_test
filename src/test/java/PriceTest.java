@@ -1,10 +1,10 @@
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
 
 public class PriceTest {
-    @Before
+    @BeforeEach
     public void setUp() {
 
     }
@@ -16,11 +16,11 @@ public class PriceTest {
     }
 
     /**
-     * °¡°ÝÇÒÀÎÀ² °è»ê <br>
-     * - ¼Ò¼öÁ¡Àº ¹ö¸² Ã³¸® (¹Ý¿Ã¸® ¾ÈÇÔ)
-     * @param selPrc ÆÇ¸Å°¡
-     * @param finalDscPrc ÃÖÁ¾ÇÒÀÎ°¡
-     * @return ÇÒÀÎÀ²
+     * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ <br>
+     * - ï¿½Ò¼ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½ (ï¿½Ý¿Ã¸ï¿½ ï¿½ï¿½ï¿½ï¿½)
+     * @param selPrc ï¿½Ç¸Å°ï¿½
+     * @param finalDscPrc ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î°ï¿½
+     * @return ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
      */
     public int getDiscountRate(long selPrc, long finalDscPrc) {
         int discountRate = 0;
@@ -31,7 +31,7 @@ public class PriceTest {
         try {
             if (dSellPrice.compareTo(dFinalPrice) == 1) {
                 BigDecimal dscRate = (dSellPrice.subtract(dFinalPrice)).divide(dSellPrice, 2, BigDecimal.ROUND_DOWN).multiply(new BigDecimal("100"));
-                dscRate = dscRate.setScale(0); // ¼Ò¼ýÁ¡ ¾ø´Â Æ÷¸ä
+                dscRate = dscRate.setScale(0); // ï¿½Ò¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
                 discountRate = dscRate.intValue();
             }
         } catch (Exception e){

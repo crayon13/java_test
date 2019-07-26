@@ -6,7 +6,7 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.math.NumberUtils;
 import org.apache.commons.lang3.time.DateUtils;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -15,9 +15,11 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import static org.hamcrest.CoreMatchers.is;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.CoreMatchers.not;
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
 public class ApacheCommonTest {
@@ -46,8 +48,8 @@ public class ApacheCommonTest {
         assertTrue("yes".equals(BooleanUtils.toStringYesNo(true)));
         assertTrue("no".equals(BooleanUtils.toStringYesNo(false)));
 
-        assertThat( BooleanUtils.toString(true, "a", "b"), is("a"));
-        assertThat( BooleanUtils.toString(false, "a", "b"), is("b"));
+        assertEquals( BooleanUtils.toString(true, "a", "b"), "a");
+        assertEquals( BooleanUtils.toString(false, "a", "b"), "b");
     }
 
     @Test
@@ -58,47 +60,47 @@ public class ApacheCommonTest {
 
     @Test
     public void stringUtilsTest() {
-        assertThat( StringUtils.capitalize("abc"), is("Abc") );
-        assertThat( StringUtils.defaultString(null, "a"), is("a"));
-        assertThat( StringUtils.defaultIfEmpty(null, "a"), is("a"));
-        assertThat( StringUtils.defaultIfEmpty("", "a"), is("a"));
-        assertThat( StringUtils.isEmpty(""), is(true));
-        assertThat( StringUtils.isEmpty(null), is(true));
+        assertEquals( StringUtils.capitalize("abc"), "Abc");
+        assertEquals( StringUtils.defaultString(null, "a"), "a");
+        assertEquals( StringUtils.defaultIfEmpty(null, "a"), "a");
+        assertEquals( StringUtils.defaultIfEmpty("", "a"), "a");
+        assertEquals( StringUtils.isEmpty(""), true);
+        assertEquals( StringUtils.isEmpty(null), true);
 
         List<String> testList = new ArrayList<>();
         testList.add("1");
         testList.add("2");
         testList.add("3");
 
-        assertThat( StringUtils.join(testList, ","), is("1,2,3"));
+        assertEquals( StringUtils.join(testList, ","), "1,2,3");
 
         String testStringNull = null;
         String testStringBlank = " ";
         String testString1 = "1";
         String testString2 = "2";
         String testString3 = "3";
-        assertThat(
+        assertEquals(
                 StringUtils.isAnyBlank(testStringNull, testStringBlank, testString1, testString2, testString3),
-                is(true) );
-        assertThat(
+                true );
+        assertEquals(
             StringUtils.isNoneBlank(testStringNull, testStringBlank, testString1, testString2, testString3),
-            is(false) );
+            false );
 
 
-        assertThat(
+        assertEquals(
             StringUtils.isAnyEmpty(testStringNull, testStringBlank, testString1, testString2, testString3),
-            is(true) );
-        assertThat(
+            true );
+        assertEquals(
             StringUtils.isNoneEmpty(testStringNull, testStringBlank, testString1, testString2, testString3),
-            is(false) );
+            false );
 
 
-        assertThat(
+        assertEquals(
             StringUtils.isAnyEmpty(testStringBlank, testString1, testString2, testString3),
-            is(false) );
-        assertThat(
+            false );
+        assertEquals(
             StringUtils.isNoneEmpty(testStringBlank, testString1, testString2, testString3),
-            is(true) );
+            true);
 
     }
 
@@ -108,19 +110,19 @@ public class ApacheCommonTest {
         int compareNumber = 4;
         int toNumber = 3;
 
-        assertThat(Range.between(fromNumber,toNumber).contains(compareNumber),
-                is(between(fromNumber, compareNumber, toNumber)) );
+        assertEquals(Range.between(fromNumber,toNumber).contains(compareNumber),
+                between(fromNumber, compareNumber, toNumber));
 
-        assertThat( between(fromNumber, compareNumber, toNumber), is(false) );
+        assertEquals( between(fromNumber, compareNumber, toNumber), false );
 
-        assertThat( Range.between(1,3).getMaximum(), is(3));
-        assertThat( Range.between(1,3).getMinimum(), is(1));
-        assertThat( Range.between(1,3).isStartedBy(1), is(true));
-        assertThat( Range.between(1,3).isEndedBy(3), is(true));
-        assertThat( Range.between(1,3).isAfter(0), is(true));
-        assertThat( Range.between(1,3).isBefore(4), is(true));
-        assertThat( Range.between(1,3).isAfterRange(Range.between(-1,0)), is(true));
-        assertThat( Range.between(1,3).isBeforeRange(Range.between(4,10)), is(true));
+        assertThat( Range.between(1,3).getMaximum()).isEqualTo(3);
+        assertThat( Range.between(1,3).getMinimum()).isEqualTo(1);;
+        assertEquals( Range.between(1,3).isStartedBy(1), true);
+        assertEquals( Range.between(1,3).isEndedBy(3), true);
+        assertEquals( Range.between(1,3).isAfter(0), true);
+        assertEquals( Range.between(1,3).isBefore(4), true);
+        assertEquals( Range.between(1,3).isAfterRange(Range.between(-1,0)), true);
+        assertEquals( Range.between(1,3).isBeforeRange(Range.between(4,10)), true);
     }
 
     private static boolean between(int startNumber, int compareNumber, int endNumber) {
@@ -130,13 +132,13 @@ public class ApacheCommonTest {
 
     @Test
     public void numberUtilsTest() {
-        assertThat(NumberUtils.toInt("12335465", 0), is(12335465));
-        assertThat(NumberUtils.toInt(null, 0), is(0));
-        assertThat(NumberUtils.toInt("", 0), is(0));
-        assertThat(NumberUtils.toInt("abc", 0), is(0));
-        assertThat(NumberUtils.toInt("abc"), is(0));
+        assertEquals(NumberUtils.toInt("12335465", 0), 12335465);
+        assertEquals(NumberUtils.toInt(null, 0), 0);
+        assertEquals(NumberUtils.toInt("", 0), 0);
+        assertEquals(NumberUtils.toInt("abc", 0), 0);
+        assertEquals(NumberUtils.toInt("abc"), 0);
 
-        assertThat(NumberUtils.isNumber("a"), is(false));
+        assertEquals(NumberUtils.isNumber("a"), false);
     }
 
     @Test
@@ -195,7 +197,7 @@ public class ApacheCommonTest {
         MockObject object1 = new MockObject("id", "name", 0);
         MockObject object2 = new MockObject("id", "name", 1);
 
-        assertThat(object1.equals(object2), is(true));
+        assertEquals(object1.equals(object2), true);
     }
 
     @Test
@@ -203,21 +205,21 @@ public class ApacheCommonTest {
         MockObject object1 = new MockObject("id", "name", 0);
         MockObject object2 = new MockObject("id", "name", 1);
 
-        assertThat(object1.toString(), not(object2.toString()));
+        assertEquals(object1.toString(), not(object2.toString()));
     }
 
     @Test
     public void stringToLongTest(){
         String givenString = "1201906194115353690";
 
-        assertThat(Long.parseLong(givenString), is(1201906194115353690L) );
+        assertEquals(Long.parseLong(givenString), 1201906194115353690L);
         System.out.println(Double.parseDouble(givenString));
     }
 
 
     @Test
     public void filenameUtilsTest() {
-        assertThat(FilenameUtils.getExtension("a.txt"), is("txt"));
+        assertEquals(FilenameUtils.getExtension("a.txt"), "txt");
     }
 
 

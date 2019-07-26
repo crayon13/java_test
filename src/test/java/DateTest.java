@@ -1,5 +1,5 @@
-import org.junit.Assert;
-import org.junit.Test;
+
+import org.junit.jupiter.api.Test;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -9,7 +9,9 @@ import java.time.temporal.ChronoUnit;
 import java.util.Calendar;
 import java.util.Date;
 
-import static org.hamcrest.Matchers.is;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+
 
 public class DateTest {
 
@@ -22,7 +24,7 @@ public class DateTest {
         LocalDateTime testDateTime = LocalDateTime.parse(given,formatter);
 
 
-        Assert.assertFalse(  checkRateDateTime("1", given) );
+        assertFalse(  checkRateDateTime("1", given) );
     }
 
     private boolean checkRateDateTime(String rate, String endDate){
@@ -55,7 +57,7 @@ public class DateTest {
 
         System.out.println(localDate);
 
-        Assert.assertThat(localDate, is(simpleDate));
+        assertEquals(localDate, simpleDate);
     }
 
     @Test
@@ -63,11 +65,11 @@ public class DateTest {
         String dateValue = "20190311";
         int amountDay = 10;
 
-        Assert.assertThat(getEvaluateDate(dateValue, amountDay) , is(getEvaluateDateWithLocalDateTime(dateValue, amountDay)));
+        assertEquals(getEvaluateDate(dateValue, amountDay) , getEvaluateDateWithLocalDateTime(dateValue, amountDay));
 
 
         dateValue = "20190101";
-        Assert.assertThat(getEvaluateDate(dateValue, amountDay) , is(getEvaluateDateWithLocalDateTime(dateValue, amountDay)));
+        assertEquals(getEvaluateDate(dateValue, amountDay) , getEvaluateDateWithLocalDateTime(dateValue, amountDay));
     }
 
 

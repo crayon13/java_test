@@ -1,5 +1,7 @@
-import org.junit.Before;
-import org.junit.Test;
+
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -14,7 +16,7 @@ public class FileWriteTest {
     private String destinationFilePath3 = "/Users/crayon13/Downloads/test/test3.txt";
     private String destinationFilePath4 = "/Users/crayon13/Downloads/test/test4.txt";
 
-    @Before
+    @BeforeEach
     public void setUp() {
 
 
@@ -49,7 +51,7 @@ public class FileWriteTest {
         }
         catch (FileNotFoundException e)
         {
-            //ÆÄÀÏÀÌ ¾ø¾î ¹é¾÷¿¡ ½ÇÆÐÇÏ¸é 0¹ÙÀÌÆ® ¿øº» ÆÄÀÏÀ» ¸¸µç´Ù.
+            //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ 0ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½.
             FileChannel newFileChannel = null;
             try {
                 newFileChannel = new FileOutputStream(scrFile).getChannel();

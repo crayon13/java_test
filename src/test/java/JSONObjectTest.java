@@ -1,23 +1,23 @@
 import net.sf.json.JSONObject;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class JSONObjectTest {
 
     @Test
     public void validJSONObjectTest() {
         JSONObject jsonObject = new JSONObject();
-        assertThat(jsonObject.length(), is(0));
-        assertThat(jsonObject.isEmpty(), is(true));
-        assertThat(jsonObject.isNullObject(), is(false));
+        assertEquals(jsonObject.length(), 0);
+        assertTrue(jsonObject.isEmpty());
+        assertFalse(jsonObject.isNullObject());
 
         jsonObject.put("a", "A");
 
-        assertThat(jsonObject.length(), is(1));
-        assertThat(jsonObject.isEmpty(), is(false));
+        assertEquals(jsonObject.length(), 1);
+        assertFalse(jsonObject.isEmpty());
 
     }
 }

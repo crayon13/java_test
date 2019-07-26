@@ -1,13 +1,9 @@
 package file;
 
 import network.WebCrawler;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import static org.hamcrest.CoreMatchers.not;
-import static org.hamcrest.Matchers.greaterThan;
-import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class FileHandlerTest {
     private static String testFilePath = "/Users/crayon13/workspace/testFile/";
@@ -15,7 +11,7 @@ public class FileHandlerTest {
     @Test
     public void getFileContenSizeTest() {
         String sourceFilePath = testFilePath + "file.txt";
-        assertThat(new FileHandler().getFileContenSize(sourceFilePath), is(10L));
+        assertThat(new FileHandler().getFileContenSize(sourceFilePath)).isEqualTo(10L);
     }
 
     @Test
@@ -23,7 +19,7 @@ public class FileHandlerTest {
         String sourceFilePath = testFilePath + "file.txt";
         String destinationFilePath = testFilePath +"/file2.txt";
         boolean isCopy = new FileHandler().copyFileByNio(sourceFilePath, destinationFilePath);
-        assertThat(isCopy, is(true));
+        assertThat(isCopy).isTrue();
     }
 
 
@@ -47,7 +43,7 @@ public class FileHandlerTest {
         String sourceFilePath = testFilePath + "file2.txt";
         for ( int count = 0 ; count <= 1000; count++ ) {
             System.out.println("count : " + count);
-            assertThat(new FileHandler().getFileContenSize(sourceFilePath), not(0L));
+            assertThat(new FileHandler().getFileContenSize(sourceFilePath)).isNotEqualTo(0L);
 
             try {
                 Thread.sleep(100);
@@ -67,10 +63,10 @@ public class FileHandlerTest {
         FileHandler fileHandler = new FileHandler();
 
         fileHandler.writeToFile(content, sourceFilePath, characterSet, characterSet);
-        assertThat(fileHandler.getFileContenSize(sourceFilePath), greaterThan(0L));
+        assertThat(fileHandler.getFileContenSize(sourceFilePath)).isGreaterThan(0L);
 
         fileHandler.copyFileByNio(sourceFilePath, destinationFilePath);
-        assertThat(fileHandler.getFileContenSize(destinationFilePath), greaterThan(0L));
+        assertThat(fileHandler.getFileContenSize(destinationFilePath)).isGreaterThan(0L);
     }
 
 }
