@@ -1,7 +1,5 @@
 package file;
 
-import org.apache.commons.lang3.math.NumberUtils;
-import org.junit.Assert;
 import org.junit.Test;
 
 import javax.imageio.ImageIO;
