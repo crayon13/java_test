@@ -27,52 +27,56 @@ public class StringUtilsTest {
     @Test
     @DisplayName("empty 가 1개 이상 존재 : StringUtils.isEmpty(a) || StringUtils.isEmpty(b) 대체")
     public void isAnyEmpty() {
-        String testString = "";
+        String testStringNull = null;
+        String testStringBlank = " ";
+        String testStringEmpty = "";
         String testString1 = "1";
         String testString2 = "2";
-        String testString3 = "3";
 
         assertThat(
-            StringUtils.isAnyEmpty(testString, testString1, testString2, testString3)
+            StringUtils.isAnyEmpty(testStringNull, testStringBlank, testStringEmpty, testString1, testString2)
         ).isTrue();
     }
 
     @Test
     @DisplayName("empty 가 존재하지 않음 : StringUtils.isNotEmpty(a) && StringUtils.isNotEmpty(b) 대체")
     public void isNoneEmpty() {
-        String testString = "";
+        String testStringNull = null;
+        String testStringBlank = " ";
+        String testStringEmpty = "";
         String testString1 = "1";
         String testString2 = "2";
-        String testString3 = "3";
-
+        
         assertThat(
-            StringUtils.isNoneEmpty(testString, testString1, testString2, testString3)
+            StringUtils.isNoneEmpty(testStringNull, testStringBlank, testStringEmpty, testString1, testString2)
         ).isFalse();
     }
 
     @Test
     @DisplayName("blank 가 1개 이상 존재 : StringUtils.isBlank(a) || StringUtils.isBlank(b) 대체")
     public void isAnyBlank() {
-        String testString = " ";
+        String testStringNull = null;
+        String testStringBlank = " ";
+        String testStringEmpty = "";
         String testString1 = "1";
         String testString2 = "2";
-        String testString3 = "3";
 
         assertThat(
-            StringUtils.isAnyBlank(testString, testString1, testString2, testString3)
+            StringUtils.isAnyBlank(testStringNull, testStringBlank, testStringEmpty, testString1, testString2)
         ).isTrue();
     }
 
     @Test
     @DisplayName("blank 가 존재하지 않음 : StringUtils.isNotBlank(a) && StringUtils.isNotBlank(b) 대체")
     public void isNoneBlank() {
-        String testString = " ";
+        String testStringNull = null;
+        String testStringBlank = " ";
+        String testStringEmpty = "";
         String testString1 = "1";
         String testString2 = "2";
-        String testString3 = "3";
 
         assertThat(
-            StringUtils.isNoneBlank(testString, testString1, testString2, testString3)
+            StringUtils.isNoneBlank(testStringNull, testStringBlank, testStringEmpty, testString1, testString2)
         ).isFalse();
     }
 
