@@ -1,28 +1,27 @@
 package apache.common.lang3;
 
 import org.apache.commons.lang3.StringUtils;
-import org.junit.Test;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
+
 
 public class StringUtilsTest {
 
     @Test
     @DisplayName("첫글자 대문자 변환")
     public void capitalize() {
-        assertThat( StringUtils.capitalize("abc"), is("Abc") );
+        assertThat( StringUtils.capitalize("abc")).isEqualTo("Abc");
     }
 
     @Test
     @DisplayName("문자열 내 특정 문자 포함 확인 : indexOf() > 0 대체")
     public void containsAny() {
-        assertThat(StringUtils.containsAny(",", "A,B,C"), is(true));
+        assertThat(StringUtils.containsAny(",", "A,B,C")).isTrue();
     }
 
     @Test
@@ -34,8 +33,8 @@ public class StringUtilsTest {
         String testString3 = "3";
 
         assertThat(
-            StringUtils.isAnyEmpty(testString, testString1, testString2, testString3),
-            is(true) );
+            StringUtils.isAnyEmpty(testString, testString1, testString2, testString3)
+        ).isTrue();
     }
 
     @Test
@@ -47,8 +46,8 @@ public class StringUtilsTest {
         String testString3 = "3";
 
         assertThat(
-            StringUtils.isNoneEmpty(testString, testString1, testString2, testString3),
-            is(false) );
+            StringUtils.isNoneEmpty(testString, testString1, testString2, testString3)
+        ).isTrue();
     }
 
     @Test
@@ -60,8 +59,8 @@ public class StringUtilsTest {
         String testString3 = "3";
 
         assertThat(
-            StringUtils.isAnyBlank(testString, testString1, testString2, testString3),
-            is(true) );
+            StringUtils.isAnyBlank(testString, testString1, testString2, testString3)
+        ).isTrue();
     }
 
     @Test
@@ -73,8 +72,8 @@ public class StringUtilsTest {
         String testString3 = "3";
 
         assertThat(
-            StringUtils.isNoneBlank(testString, testString1, testString2, testString3),
-            is(false) );
+            StringUtils.isNoneBlank(testString, testString1, testString2, testString3)
+        ).isTrue();
     }
 
 
@@ -86,18 +85,18 @@ public class StringUtilsTest {
         testList.add("2");
         testList.add("3");
 
-        assertThat( StringUtils.join(testList, ","), is("1,2,3"));
+        assertThat( StringUtils.join(testList, ",")).isEqualTo("1,2,3");
     }
 
     @Test
     public void pad() {
-        assertThat(StringUtils.rightPad("abc", 6, "*"), is("abc***"));
-        assertThat(StringUtils.rightPad("abcdef", 6, "*"), is("abcdef"));
-        assertThat(StringUtils.rightPad("abcdefg", 6, "*"), is("abcdefg"));
+        assertThat(StringUtils.rightPad("abc", 6, "*")).isEqualTo("abc***");
+        assertThat(StringUtils.rightPad("abcdef", 6, "*")).isEqualTo("abcdef");
+        assertThat(StringUtils.rightPad("abcdefg", 6, "*")).isEqualTo("abcdefg");
 
-        assertThat(StringUtils.leftPad("abc", 6, "0"), is("000abc"));
+        assertThat(StringUtils.leftPad("abc", 6, "0")).isEqualTo("000abc");
 
-        assertThat(StringUtils.leftPad("abc", 4, "0"), is("0abc"));
-        assertEquals(StringUtils.leftPad("abc", 4, "0"), "0abc");
+        assertThat(StringUtils.leftPad("abc", 4, "0")).isEqualTo("0abc");
+        assertThat(StringUtils.leftPad("abc", 4, "0")).isEqualTo("0abc");
     }
 }
