@@ -1,4 +1,5 @@
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 
 import java.text.SimpleDateFormat;
@@ -12,7 +13,7 @@ import java.util.Date;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
-
+@Slf4j
 public class DateTest {
 
     @Test
@@ -70,6 +71,24 @@ public class DateTest {
 
         dateValue = "20190101";
         assertEquals(getEvaluateDate(dateValue, amountDay) , getEvaluateDateWithLocalDateTime(dateValue, amountDay));
+    }
+
+    @Test
+    public void remainShapTimeSecTest() {
+        final int HOUR_TO_MINUTE = 60;
+        final int MINUTE_TO_SECOND = 60;
+
+        LocalDateTime now = LocalDateTime.now();
+        int minute = now.getMinute();
+        int second = now.getSecond();
+
+        int remainShapTimeSec = HOUR_TO_MINUTE * MINUTE_TO_SECOND - ( minute * MINUTE_TO_SECOND + second);
+
+        log.debug("now : " + now.toString() + ",remainShapTimeSec : " + remainShapTimeSec);
+
+        assertEquals(remainShapTimeSec,
+            (HOUR_TO_MINUTE - 1 - minute) * MINUTE_TO_SECOND + (MINUTE_TO_SECOND - second)
+        );
     }
 
 
