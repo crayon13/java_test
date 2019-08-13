@@ -26,6 +26,11 @@ public class DateTest {
 
 
         assertFalse(  checkRateDateTime("1", given) );
+
+
+        String now = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddHHmmss"));
+        log.debug(now);
+
     }
 
     private boolean checkRateDateTime(String rate, String endDate){

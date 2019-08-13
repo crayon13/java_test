@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class EtcTest {
 
@@ -44,6 +45,23 @@ public class EtcTest {
 
         String result = Arrays.stream(excludeKeywords).anyMatch(excludeKeyword -> keyword.toLowerCase().equals(excludeKeyword.trim())) ? keyword : "";
         return result;
+    }
+
+
+    @Test
+    public void streamTest() {
+
+        List<String> browserList = Arrays.asList(
+            "iPhone", "iPod", "Android",
+            "IEMobile", "Mobile", "lgtelecom",
+            "PPC"
+        );
+
+        String browser = "IPHONE";
+
+        boolean isMobileBrowser = browserList.stream().anyMatch(b -> StringUtils.containsIgnoreCase(b, browser));
+
+        assertTrue(isMobileBrowser);
     }
 
 
