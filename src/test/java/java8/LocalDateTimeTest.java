@@ -1,5 +1,7 @@
+package java8;
 
 import lombok.extern.slf4j.Slf4j;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.text.SimpleDateFormat;
@@ -14,9 +16,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
 @Slf4j
-public class DateTest {
+public class LocalDateTimeTest {
 
     @Test
+    @DisplayName("")
     public void checkRateDateTimeTest() {
         String given = "20190128235959";
 
@@ -57,11 +60,11 @@ public class DateTest {
     @Test
     public void localDateTime() {
         String simpleDate = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
-        System.out.println("simpleDate : " + simpleDate);
+        log.debug("simpleDate : " + simpleDate);
         String localDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddHHmmss"));
 
 
-        System.out.println(localDate);
+        log.debug(localDate);
 
         assertEquals(localDate, simpleDate);
     }
@@ -96,7 +99,6 @@ public class DateTest {
         );
     }
 
-
     private String getEvaluateDate(String dateValue, int amountDay) {
         int year = Integer.parseInt(dateValue.substring(0, 4));
         int month = Integer.parseInt(dateValue.substring(4, 6));
@@ -113,16 +115,10 @@ public class DateTest {
         return evaluateDate;
     }
 
-
-
     private String getEvaluateDateWithLocalDateTime(String dateValue, int amountDay) {
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.BASIC_ISO_DATE;
         return LocalDate.parse(dateValue, dateTimeFormatter).
-                plusDays(amountDay).
-                format(dateTimeFormatter);
+            plusDays(amountDay).
+            format(dateTimeFormatter);
     }
-
-
-
-
 }
