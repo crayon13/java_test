@@ -60,11 +60,10 @@ public class LocalDateTimeTest {
     @Test
     public void localDateTime() {
         String simpleDate = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
-        log.debug("simpleDate : " + simpleDate);
+        log.debug("simpleDate : {}", simpleDate);
+
         String localDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddHHmmss"));
-
-
-        log.debug(localDate);
+        log.debug("localDate : {}, {}", localDate, "a");
 
         assertEquals(localDate, simpleDate);
     }
@@ -92,7 +91,7 @@ public class LocalDateTimeTest {
 
         int remainShapTimeSec = HOUR_TO_MINUTE * MINUTE_TO_SECOND - ( minute * MINUTE_TO_SECOND + second);
 
-        log.debug("now : " + now.toString() + ",remainShapTimeSec : " + remainShapTimeSec);
+        log.debug("now : {} ,remainShapTimeSec : {}", now.toString(), remainShapTimeSec);
 
         assertEquals(remainShapTimeSec,
             (HOUR_TO_MINUTE - 1 - minute) * MINUTE_TO_SECOND + (MINUTE_TO_SECOND - second)
