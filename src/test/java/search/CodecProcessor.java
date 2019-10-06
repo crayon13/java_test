@@ -6,7 +6,7 @@ package search;
 import org.apache.commons.codec.language.Metaphone;
 import org.apache.commons.codec.language.Soundex;
 
-public class CodexProcessor {
+public class CodecProcessor {
     private static final Soundex soundex = new Soundex();
     private static final Metaphone methaphone = new Metaphone();
 
@@ -18,6 +18,4 @@ public class CodexProcessor {
         methaphone.setMaxCodeLen(100);
         return methaphone.encode(text);
     }
-
-
 }

@@ -3,8 +3,8 @@ package search;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static search.CodexProcessor.converMetaphone;
-import static search.CodexProcessor.convertSoundex;
+import static search.CodecProcessor.converMetaphone;
+import static search.CodecProcessor.convertSoundex;
 
 public class CodecProcessorTest {
     @Test
