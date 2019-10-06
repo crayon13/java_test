@@ -1,5 +1,7 @@
 package search;
-
+/*
+* http://www.javased.com/?api=org.apache.commons.codec.language.Soundex 참고
+* */
 import org.apache.commons.codec.language.Soundex;
 
 public class SoundexProcessor {
