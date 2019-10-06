@@ -63,6 +63,7 @@ public class KoreanProcessor {
                     Korean.CHOSUNG.convertEnglishSound(chars)
                         + Korean.JUNGSUNG.convertEnglishSound(chars)
                 );
+
                 if ( Korean.JONGSUNG.getCharIndex(chars) != 0x0000 ) {
                     result += Korean.JONGSUNG.convertEnglishSound(chars);
                 }
