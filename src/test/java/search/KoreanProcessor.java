@@ -13,11 +13,10 @@ public class KoreanProcessor {
         String resultEng = "";
 
         for (int index = 0; index < sourceKoreanText.length(); index += 1) {
-
             /*  한글자씩 읽어들인다. */
-            char chars = (char) (sourceKoreanText.charAt(index) - 0xAC00);
+            char chars = getChar(sourceKoreanText, index);
 
-            if (chars <= 11172) {
+            if (isJaumAndMoum(chars)) {
                 /* A. 자음과 모음이 합쳐진 글자인경우 */
                 /* 알파벳으로 */
                 resultEng += Korean.CHOSUNG.convertEnglishKeyboard(chars);
@@ -26,20 +25,18 @@ public class KoreanProcessor {
 
             } else {
                 /* B. 한글이 아니거나 자음만 있을경우 */
-
                 /* 알파벳으로 */
-                if (chars >= 34097 && chars <= 34126) {
+                if (isSingleJaum(chars)) {
                     /* 단일자음인 경우 */
                     resultEng += Korean.SINGLE_JAUM.convertEnglishKeyboard(chars);
-                } else if (chars >= 34127 && chars <= 34147) {
+                } else if (isSingleMoum(chars)) {
                     /* 단일모음인 경우 */
                     resultEng += Korean.SINGLE_MOUM.convertEnglishKeyboard(chars);
                 } else {
                     /* 알파벳인 경우 */
-                    resultEng += ((char) (chars + 0xAC00));
+                    resultEng += getNotKoreaChar(chars);
                 }
             }//if
-
         }//for
 
         log.debug("============ result ==========");
@@ -49,30 +46,34 @@ public class KoreanProcessor {
         return resultEng;
     }
 
+
+    private static char getNotKoreaChar(char chars) {
+        return (char)(chars + 0xAC00);
+    }
+
+
     public static String convertEnglishSound(String sourceKoreanText) {
         String result = "";
 
         for (int index = 0; index < sourceKoreanText.length(); index+= 1) {
-
             /*  한글자씩 읽어들인다. */
-            char chars = (char) (sourceKoreanText.charAt(index) - 0xAC00);
+            char chars = getChar(sourceKoreanText, index);
 
-            if (chars >= 0 && chars <= 11172) {
+            if (isJaumAndMoum(chars)) {
                 /* A. 자음과 모음이 합쳐진 글자인경우 */
                 result += StringUtils.capitalize(
                     Korean.CHOSUNG.convertEnglishSound(chars)
                         + Korean.JUNGSUNG.convertEnglishSound(chars)
                 );
 
-                if ( Korean.JONGSUNG.getCharIndex(chars) != 0x0000 ) {
+                if (isJongsungNotEmpty(chars)) {
                     result += Korean.JONGSUNG.convertEnglishSound(chars);
                 }
             } else {
                 /* B. 한글이 아니거나 자음만 있을경우 */
                 /* 자음분리 */
-                result += ((char)(chars + 0xAC00));
+                result += getNotKoreaChar(chars);
             }//if
-
         }//for
 
         log.debug("============ result ==========");
@@ -81,26 +82,27 @@ public class KoreanProcessor {
 
         return result;
     }
+
 
     public static String convertAtomicWord(String sourceKoreanText) {
         String result = "";
 
         for (int index = 0; index < sourceKoreanText.length(); index+= 1) {
-
             /*  한글자씩 읽어들인다. */
-            char chars = (char) (sourceKoreanText.charAt(index) - 0xAC00);
+            char chars = getChar(sourceKoreanText, index);
 
-            if (chars <= 11172) {
+            if (isJaumAndMoum(chars)) {
                 /* A. 자음과 모음이 합쳐진 글자인경우 */
                 result += Korean.CHOSUNG.convertAtomic(chars);
                 result += Korean.JUNGSUNG.convertAtomic(chars);
-                if ( Korean.JONGSUNG.getCharIndex(chars) != 0x0000 ) {
+
+                if (isJongsungNotEmpty(chars)) {
                     result += Korean.JONGSUNG.convertAtomic(chars);
                 }
             } else {
                 /* B. 한글이 아니거나 자음만 있을경우 */
                 /* 자음분리 */
-                result += ((char)(chars + 0xAC00));
+                result += getNotKoreaChar(chars);
             }//if
 
         }//for
@@ -112,4 +114,23 @@ public class KoreanProcessor {
         return result;
     }
 
+    private static char getChar(String text, int index) {
+        return (char)(text.charAt(index) - 0xAC00);
+    }
+
+    private static boolean isSingleJaum(char chars) {
+        return chars >= 34097 && chars <= 34126;
+    }
+
+    private static boolean isJaumAndMoum(char chars) {
+        return chars <= 11172;
+    }
+
+    private static boolean isSingleMoum(char chars) {
+        return chars >= 34127 && chars <= 34147;
+    }
+
+    private static boolean isJongsungNotEmpty(char chars) {
+        return Korean.JONGSUNG.getCharIndex(chars) != 0x0000;
+    }
 }
