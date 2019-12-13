@@ -15,4 +15,10 @@ public class BooleanUtilsTest {
     public void toStringYesNoTest() {
         assertThat(BooleanUtils.toStringYesNo(true)).isEqualTo("yes");
     }
+
+    @Test
+    public void toStringYNTest() {
+        assertThat(BooleanUtils.toString(true, "Y", "N")).isEqualTo("Y");
+        assertThat(BooleanUtils.toString(false, "Y", "N")).isEqualTo("N");
+    }
 }

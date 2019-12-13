@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -119,5 +120,20 @@ public class LocalDateTimeTest {
         return LocalDate.parse(dateValue, dateTimeFormatter).
             plusDays(amountDay).
             format(dateTimeFormatter);
+    }
+
+
+    @Test
+    public void convertTimeStampTest() {
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+
+        LocalDateTime now1 = timestamp.toLocalDateTime();
+        log.debug(now1.toString());
+
+        LocalDateTime now2 = LocalDateTime.now();
+        log.debug(now2.toString());
+
+
+        log.debug(now2.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
     }
 }
