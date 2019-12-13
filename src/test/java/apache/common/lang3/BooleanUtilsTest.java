@@ -21,4 +21,16 @@ public class BooleanUtilsTest {
         assertThat(BooleanUtils.toString(true, "Y", "N")).isEqualTo("Y");
         assertThat(BooleanUtils.toString(false, "Y", "N")).isEqualTo("N");
     }
+
+    @Test
+    public void toBooleanObjectTest() {
+        Integer nullValue = null;
+        assertThat(BooleanUtils.toBooleanObject(nullValue)).isFalse();
+
+        Integer zero = 0;
+        assertThat(BooleanUtils.toBooleanObject(zero)).isFalse();
+
+        Integer trueValue = 1;
+        assertThat(BooleanUtils.toBooleanObject(trueValue)).isTrue();
+    }
 }
