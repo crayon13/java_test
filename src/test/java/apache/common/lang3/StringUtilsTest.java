@@ -1,5 +1,6 @@
 package apache.common.lang3;
 
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -9,7 +10,7 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-
+@Slf4j
 public class StringUtilsTest {
 
     @Test
@@ -103,4 +104,17 @@ public class StringUtilsTest {
         assertThat(StringUtils.leftPad("abc", 4, "0")).isEqualTo("0abc");
         assertThat(StringUtils.leftPad("abc", 4, "0")).isEqualTo("0abc");
     }
+
+    @Test
+    public void splitAndJoinTest() {
+        String testString = "a,b,c,d e,f";
+        String[] testArray = StringUtils.split(testString, ",");
+        String actualString = StringUtils.join(testArray, " ");
+
+        assertThat(testArray.length).isEqualTo(5);
+        assertThat(actualString).isEqualTo(testString.replaceAll(",", " "));
+
+        log.debug(actualString);
+    }
+
 }
