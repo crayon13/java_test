@@ -1,9 +1,13 @@
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.math.NumberUtils;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -66,6 +70,33 @@ public class EtcTest {
 
     }
 
+
+
+    @Test
+    public void collectionsSortTest() {
+        List<String> testList = Arrays.asList(
+                "goods_view_log_201912",
+                "goods_view_log_201910",
+                "goods_view_log_201911"
+        );
+
+        Collections.sort(testList);
+        Collections.reverse(testList);
+
+        for (String test : testList) {
+            log.debug(test);
+        }
+
+        log.debug("--------------");
+
+        List<String> test2 = testList.subList(0, NumberUtils.min(2, testList.size()));
+
+
+        for (String test : test2) {
+            log.debug(test);
+        }
+
+    }
 
 
 }
