@@ -117,4 +117,14 @@ public class StringUtilsTest {
         log.debug(actualString);
     }
 
+    @Test
+    public void replaceTest() {
+        String testString = "abcd_{}";
+        String expectString = "abcd_efg";
+
+        log.debug(StringUtils.replace(testString, "{}", "efg"));
+        assertThat(StringUtils.replace(testString, "{}", "efg")).isEqualTo(expectString);
+
+    }
+
 }

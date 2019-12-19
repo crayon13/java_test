@@ -1,5 +1,4 @@
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.math.NumberUtils;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
@@ -75,9 +74,9 @@ public class EtcTest {
     @Test
     public void collectionsSortTest() {
         List<String> testList = Arrays.asList(
-                "goods_view_log_201912",
                 "goods_view_log_201910",
-                "goods_view_log_201911"
+                "goods_view_log_201911",
+                "goods_view_log_201909"
         );
 
         Collections.sort(testList);
@@ -89,7 +88,13 @@ public class EtcTest {
 
         log.debug("--------------");
 
-        List<String> test2 = testList.subList(0, NumberUtils.min(2, testList.size()));
+
+        List<String> test2 = Arrays.asList("goods_view_log_201912");
+//        test2.addAll(testList);
+
+
+        test2.subList(0, 1);
+
 
 
         for (String test : test2) {
