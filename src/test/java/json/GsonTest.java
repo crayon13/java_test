@@ -1,8 +1,12 @@
 package json;
 
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 @Slf4j
 public class GsonTest {
@@ -31,6 +35,49 @@ public class GsonTest {
 
         log.debug(String.valueOf(rootNode));
 
+    }
+
+    @Test
+    public void getJsonForString() {
+        String jsonString = "{\n" +
+            "  \"took\": 8,\n" +
+            "  \"timed_out\": false,\n" +
+            "  \"_shards\": {\n" +
+            "    \"total\": 5,\n" +
+            "    \"successful\": 5,\n" +
+            "    \"failed\": 0\n" +
+            "  },\n" +
+            "  \"hits\": {\n" +
+            "    \"total\": 596638,\n" +
+            "    \"max_score\": null,\n" +
+            "    \"hits\": [\n" +
+            "      {\n" +
+            "        \"_index\": \"good_search\",\n" +
+            "        \"_type\": \"data\",\n" +
+            "        \"_id\": \"1194967\",\n" +
+            "        \"_score\": null,\n" +
+            "        \"_source\": {\n" +
+            "          \"ut\": \"2019-10-21 16:08:42\"\n" +
+            "        },\n" +
+            "        \"sort\": [\n" +
+            "          1571674122000\n" +
+            "        ]\n" +
+            "      }\n" +
+            "    ]\n" +
+            "  }\n" +
+            "}";
+
+        JsonParser parser = new JsonParser();
+        JsonElement element = parser.parse(jsonString);
+
+        String updateDate = element.getAsJsonObject().get("hits")
+            .getAsJsonObject().get("hits")
+                .getAsJsonArray().get(0)
+                    .getAsJsonObject().get("_source")
+                        .getAsJsonObject().get("ut").getAsString();
+
+
+        assertThat(updateDate).isEqualTo("2019-10-21 16:08:42");
     }
 
 }

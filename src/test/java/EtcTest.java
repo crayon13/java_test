@@ -80,26 +80,46 @@ public class EtcTest {
         );
 
         Collections.sort(testList);
+        for (String test : testList) {
+            log.debug(test);
+        }
+        log.debug("--------------");
+
         Collections.reverse(testList);
 
         for (String test : testList) {
             log.debug(test);
         }
-
         log.debug("--------------");
 
 
         List<String> test2 = Arrays.asList("goods_view_log_201912");
 //        test2.addAll(testList);
-
-
         test2.subList(0, 1);
-
-
 
         for (String test : test2) {
             log.debug(test);
         }
+        log.debug("--------------");
+
+        int remainCnt = 0;
+        Collections.reverse(testList);
+        for (String test : testList) {
+            log.debug(test);
+        }
+        log.debug("--------------");
+
+        List<String> test3 = testList.subList(0, testList.size() - remainCnt);
+        for (String test : test3) {
+            log.debug(test);
+        }
+
+
+
+        List<String> a = Arrays.asList("c");
+
+
+        List<String> b= Arrays.asList("a", "b");
 
     }
 
