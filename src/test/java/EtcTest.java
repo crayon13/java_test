@@ -123,5 +123,15 @@ public class EtcTest {
 
     }
 
+    @Test
+    public void compareTest() {
+        String a = "20191224";
+        String b = "20191225";
+        String c = "20191226";
+
+        log.debug(a + " : " + b + " - " + a.compareTo(b));
+        log.debug(c + " : " + b + " - " + c.compareTo(b));
+    }
+
 
 }

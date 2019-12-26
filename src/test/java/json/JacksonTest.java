@@ -120,4 +120,35 @@ public class JacksonTest {
     }
 
 
+    @Test
+    public void stringToJsonNodeTest() {
+        String given = "{\"actions\":[{\"remove\":{\"index\":\"index_1\",\"alias\":\"test_alias\"}},{\"remove\":{\"index\":\"index_1\",\"alias\":\"test_alias\"}}]}";
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+
+        try {
+            ObjectNode jsonNode = (ObjectNode)objectMapper.readTree(given);
+            assertThat(jsonNode.toString()).isEqualTo(given);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void asTextTest() {
+        String given = "{\"index\":\"index_1\",\"alias\":\"test_alias\"}";
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+
+        try {
+            JsonNode jsonNode = objectMapper.readTree(given);
+            assertThat(jsonNode.get("index").asText()).isEqualTo("index_1");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
 }
