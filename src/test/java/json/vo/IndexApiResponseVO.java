@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @NoArgsConstructor
 public class IndexApiResponseVO {
     @Getter
@@ -20,6 +22,9 @@ public class IndexApiResponseVO {
     @Setter
     @JsonProperty("_shards")
     private Shard shard;
+
+    @JsonProperty("shardList")
+    private List<Shard> shardList;
 
     public boolean isErrors() {
         return errorVO != null;
@@ -40,10 +45,12 @@ public class IndexApiResponseVO {
     @Getter
     @Setter
     @NoArgsConstructor
-    public class Shard {
+    public static class Shard {
+        @JsonProperty("total")
         public Integer total;
+        @JsonProperty("successful")
         public Integer successful;
-
+        @JsonProperty("failed")
         public Integer failed;
     }
 }

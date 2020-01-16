@@ -1,6 +1,7 @@
 package java8;
 
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -135,5 +136,32 @@ public class LocalDateTimeTest {
 
 
         log.debug(now2.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+    }
+
+    @Test
+    public void checkStringDate() {
+        String given = "20191220";
+
+        assertEquals(checkStringDate(given), given + "000000");
+        assertEquals(checkStringDate(given), checkStringDate2(given));
+
+    }
+
+
+    private String checkStringDate(String date) {
+        int nonFillCharLength = 14 - date.length();
+        String fillingCharacter = "0";
+        StringBuilder fillData = new StringBuilder();
+
+        int idx = 0;
+        while (idx < nonFillCharLength) {
+            fillData.append(fillingCharacter);
+            idx++;
+        }
+        return (date + fillData.toString());
+    }
+
+    private String checkStringDate2(String date) {
+        return StringUtils.rightPad(date, 14, "0");
     }
 }

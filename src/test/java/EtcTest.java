@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -119,8 +120,13 @@ public class EtcTest {
         List<String> a = Arrays.asList("c");
 
 
-        List<String> b= Arrays.asList("a", "b");
+        List<String> b = Arrays.asList("a", "b");
+        Collections.shuffle(b);
+        log.debug("b size - " + b.subList(0,1).get(0));
 
+
+        String[] d = new String[0];
+        List<String> e = Arrays.asList(d);
     }
 
     @Test
@@ -131,6 +137,11 @@ public class EtcTest {
 
         log.debug(a + " : " + b + " - " + a.compareTo(b));
         log.debug(c + " : " + b + " - " + c.compareTo(b));
+
+
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("total", 0);
+        Number totalCount = (Number)map.get("total");
     }
 
 

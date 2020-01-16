@@ -1,15 +1,22 @@
 package json;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import json.vo.IndexApiResponseVO;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
+import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -149,6 +156,81 @@ public class JacksonTest {
             e.printStackTrace();
         }
     }
+
+
+    @Test
+    public void aaa() {
+        ObjectMapper objectMapper = new ObjectMapper()
+                .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
+                .setSerializationInclusion(JsonInclude.Include.NON_NULL);
+
+        List<String> bindedIndices = new ArrayList<>();
+
+        ArrayNode root = null;
+        try {
+            root = (ArrayNode)objectMapper.readTree("[{\"index\":\".tasks\"},{\"index\":\"good_search-3\"},{\"index\":\"syte_api_cache_bounds\"},{\"index\":\"good_search-php\"},{\"index\":\"test\"},{\"index\":\"test-1\"},{\"index\":\"search_log_test\"},{\"index\":\"good_search-201912270756\"},{\"index\":\"goods_view_log_201912\"},{\"index\":\"issue-plan\"},{\"index\":\"good_search-1-prod\"},{\"index\":\"brand\"},{\"index\":\"good_search-201912270859\"},{\"index\":\".elastichq\"},{\"index\":\"search_func\"},{\"index\":\"syte_image_search_goods\"},{\"index\":\"search_log_201912101329\"},{\"index\":\"direct-contents\"},{\"index\":\"goods_pageview_ss\"},{\"index\":\"good_search-2\"},{\"index\":\"syte_api_cache_offers\"},{\"index\":\"syte_image_search_api_log\"},{\"index\":\"search_log\"},{\"index\":\"sangkyun\"},{\"index\":\"search\"},{\"index\":\"syte_image_search_similar_goods\"},{\"index\":\"syte_image_search_bounds\"},{\"index\":\"good_search-201912261706\"},{\"index\":\"category\"},{\"index\":\".kibana\"},{\"index\":\"goods_view_log_201911\"}]");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+        if (root.isNull() || !root.isArray()) {
+           log.debug("Empty!!!");
+        }
+
+
+
+        if (!root.isNull() && root.isArray()) {
+            for (JsonNode index : root) {
+                bindedIndices.add(index.get("index").asText());
+            }
+        }
+
+        log.debug("bindedIndices size : {}", bindedIndices.size());
+
+    }
+
+
+    @Test
+    public void getJsonPropertyListTest() {
+        List<String> jsonPropertyList = getJsonPropertyList(IndexApiResponseVO.class, null);
+        log.debug(jsonPropertyList.toString());
+    }
+
+
+    private List<String> getJsonPropertyList(Class clazz, String parentFieldName) {
+        List<String> list = new ArrayList<>();
+
+        Field[] fields = clazz.getDeclaredFields();
+        for (Field field : fields) {
+            if (field.isAnnotationPresent(JsonProperty.class)) {
+                JsonProperty jsonProperty = field.getAnnotation(JsonProperty.class);
+
+                if (field.getType().equals(List.class)) {
+                    String className = field.getGenericType().getTypeName().replaceAll("java.util.List<", "").replaceAll(">","");
+
+                    try {
+                        Class genericClass = Class.forName(className);
+                        list.addAll(getJsonPropertyList(genericClass, jsonProperty.value()));
+                        break;
+                    } catch (ClassNotFoundException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                if (StringUtils.isNotBlank(parentFieldName)) {
+                    list.add(parentFieldName + "." + jsonProperty.value());
+                } else {
+                    list.add(jsonProperty.value());
+                }
+            }
+        }
+
+        return list;
+    }
+
+
+
 
 
 }

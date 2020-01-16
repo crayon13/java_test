@@ -39,4 +39,10 @@ public class StringTest {
     }
 
 
+    @Test
+    public void stringBuilderTest() {
+        StringBuilder sb = new StringBuilder(10);
+    }
+
+
 }
