@@ -120,13 +120,19 @@ public class EtcTest {
         List<String> a = Arrays.asList("c");
 
 
-        List<String> b = Arrays.asList("a", "b");
+        List<String> b = Arrays.asList("a", "b", "c", "d");
         Collections.shuffle(b);
         log.debug("b size - " + b.subList(0,1).get(0));
+        log.debug("b size - " + b.size());
 
 
         String[] d = new String[0];
         List<String> e = Arrays.asList(d);
+
+
+        List<String> c = Arrays.asList("a");
+        log.debug("b size - " + c.subList(0,3).size());
+
     }
 
     @Test

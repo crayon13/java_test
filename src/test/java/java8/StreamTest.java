@@ -2,12 +2,11 @@ package java8;
 
 import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.Test;
-import sun.jvm.hotspot.utilities.Assert;
 
-import javax.validation.constraints.AssertTrue;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -73,6 +72,20 @@ public class StreamTest {
         assertEquals( Sex.seaarhByCode("d").name(), "A");
     }
 
+
+    @Test
+    public void findNameListByBitTest() {
+        assertEquals(SiteKindEnum.findNameListByBit("6").get(0), "MUSINSA");
+        assertEquals(SiteKindEnum.findNameListByBit("6").get(1), "WUSINSA");
+
+        assertEquals(SiteKindEnum.findNameListByBit("14").get(0), "MUSINSA");
+        assertEquals(SiteKindEnum.findNameListByBit("14").get(1), "WUSINSA");
+        assertEquals(SiteKindEnum.findNameListByBit("14").get(2), "PLSINSA");
+
+        assertEquals(SiteKindEnum.findNameListByBit("1").size(), 0);
+    }
+
+
     private enum Sex {
         K("8", "Kids"),
         F("4", "Female"),
@@ -101,5 +114,26 @@ public class StreamTest {
             return Arrays.stream(Sex.values()).filter(sex -> sex.code.equals(code)).findFirst().orElse(A);
         }
 
+    }
+
+    private enum SiteKindEnum {
+        MUSINSA(2, "무신사"),
+        WUSINSA(4, "우신사"),
+        PLSINSA(8, "플신");
+
+        private int bit;
+        private String description;
+
+        SiteKindEnum(int bit, String description) {
+            this.bit = bit;
+            this.description = description;
+        }
+
+        public static List<String> findNameListByBit(String code) {
+            return Arrays.stream(SiteKindEnum.values())
+                    .filter(siteKindEnum -> (siteKindEnum.bit & com.mysql.cj.util.StringUtils.safeIntParse(code)) > 0)
+                    .map(siteKindEnum -> siteKindEnum.name())
+                    .collect(Collectors.toList());
+        }
     }
 }

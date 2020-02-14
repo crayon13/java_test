@@ -123,6 +123,12 @@ public class EnumTest {
         }
     }
 
+    @Test
+    public void isAllTest () {
+        assertEquals(TestEnum.all.isAll(), true);
+        assertEquals(TestEnum.e1.isAll(), false);
+    }
+
 
 
     enum ServerZone {
@@ -179,6 +185,16 @@ public class EnumTest {
             } catch (IllegalArgumentException e) {
                 return null;
             }
+        }
+    }
+
+    enum TestEnum {
+        all,
+        e1,
+        e2;
+
+        public boolean isAll() {
+            return this.equals(all);
         }
     }
 

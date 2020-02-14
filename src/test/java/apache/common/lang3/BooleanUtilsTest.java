@@ -33,4 +33,25 @@ public class BooleanUtilsTest {
         Integer trueValue = 1;
         assertThat(BooleanUtils.toBooleanObject(trueValue)).isTrue();
     }
+
+    @Test
+    public void isFalseTest() {
+        assertThat(BooleanUtils.isFalse(null)).isFalse();
+        assertThat(BooleanUtils.isFalse(false)).isTrue();
+        assertThat(BooleanUtils.isFalse(true)).isFalse();
+    }
+
+    @Test
+    public void isTrueTest() {
+        assertThat(BooleanUtils.isTrue(null)).isFalse();
+        assertThat(BooleanUtils.isTrue(false)).isFalse();
+        assertThat(BooleanUtils.isTrue(true)).isTrue();
+    }
+
+    @Test
+    public void isNotTrueTest() {
+        assertThat(BooleanUtils.isNotTrue(null)).isTrue();
+        assertThat(BooleanUtils.isNotTrue(false)).isTrue();
+        assertThat(BooleanUtils.isNotTrue(true)).isFalse();
+    }
 }

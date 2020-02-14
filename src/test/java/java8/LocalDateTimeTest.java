@@ -10,6 +10,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoField;
 import java.time.temporal.ChronoUnit;
 import java.util.Calendar;
 import java.util.Date;
@@ -145,6 +146,13 @@ public class LocalDateTimeTest {
         assertEquals(checkStringDate(given), given + "000000");
         assertEquals(checkStringDate(given), checkStringDate2(given));
 
+    }
+
+
+    @Test
+    public void ampmTest() {
+        LocalDateTime now = LocalDateTime.now();
+        log.debug(now.get(ChronoField.AMPM_OF_DAY) +"");
     }
 
 

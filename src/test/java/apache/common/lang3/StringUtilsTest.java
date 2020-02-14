@@ -126,5 +126,4 @@ public class StringUtilsTest {
         assertThat(StringUtils.replace(testString, "{}", "efg")).isEqualTo(expectString);
 
     }
-
 }
