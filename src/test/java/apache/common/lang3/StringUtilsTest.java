@@ -81,6 +81,24 @@ public class StringUtilsTest {
         ).isFalse();
     }
 
+    @Test
+    @DisplayName("모두가 blank : StringUtils.isBlank(a) && StringUtils.isBlank(b) 대체")
+    public void isAllBlank() {
+        String testStringNull = null;
+        String testStringBlank = " ";
+        String testStringEmpty = "";
+        String testString1 = "1";
+
+
+        assertThat(
+                StringUtils.isAllBlank(testStringNull, testStringBlank, testStringEmpty)
+        ).isTrue();
+
+        assertThat(
+                StringUtils.isAllBlank(testStringNull, testStringBlank, testStringEmpty, testString1)
+        ).isFalse();
+    }
+
 
     @Test
     @DisplayName("구분자 기준 문자 연결 시 loop 돌리지 않아도 됩니다. ㅠㅠ")
@@ -125,5 +143,21 @@ public class StringUtilsTest {
         log.debug(StringUtils.replace(testString, "{}", "efg"));
         assertThat(StringUtils.replace(testString, "{}", "efg")).isEqualTo(expectString);
 
+    }
+
+    @Test
+    public void stringFormatExceptionTest() {
+        String format = "a:%s, b:%s, c:%s";
+        String result = String.format(format, "a", "b", "c", "d");
+
+        log.debug(result);
+    }
+
+
+    @Test
+    public void containTest() {
+        assertThat("ab,c".contains(",")).isTrue();
+        assertThat("ab,c".contains(".")).isFalse();
+        assertThat("ab c".contains(" ")).isTrue();
     }
 }

@@ -16,5 +16,14 @@ public class NumberUtilsTest {
 
         assertThat(NumberUtils.max(1, 3)).isEqualTo(3);
         assertThat(NumberUtils.min(1, 3)).isEqualTo(1);
+
+        assertThat((null == new Integer(2))).isFalse();
     }
+
+    @Test
+    public void tt() {
+        Integer a = null;
+        assertThat(NumberUtils.max(a, 1)).isEqualTo(1);
+    }
+
 }

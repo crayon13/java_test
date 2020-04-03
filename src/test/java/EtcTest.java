@@ -3,6 +3,7 @@ import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
@@ -148,6 +149,43 @@ public class EtcTest {
         HashMap<String, Object> map = new HashMap<>();
         map.put("total", 0);
         Number totalCount = (Number)map.get("total");
+    }
+
+
+    @Test
+    public void listCopyTest() {
+        List<String> a = new ArrayList<>();
+        a.add("1");
+        a.add("2");
+        a.add("3");
+
+        List<String> b = new ArrayList<>();
+        b.addAll(a);
+
+        log.debug(a.get(0));
+        log.debug(b.get(0));
+
+        a.set(0, "a");
+        log.debug(a.get(0));
+        log.debug(b.get(0));
+
+        log.debug("a : " + a.size());
+        List<String> c = a.subList(0, 2);
+        log.debug("c : " + c.size());
+
+
+        c = a.subList(0, a.size());
+        log.debug("c : " + c.size());
+    }
+
+
+    @Test
+    public void emptyListTest() {
+        List<String> a = Collections.EMPTY_LIST;
+        log.debug(a.isEmpty() + ":" + a.size());
+
+        List<String> b = new ArrayList<>();
+        log.debug(b.isEmpty() + ":" + b.size());
     }
 
 

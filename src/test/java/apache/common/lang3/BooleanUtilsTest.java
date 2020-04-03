@@ -7,7 +7,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class BooleanUtilsTest {
     @Test
-    public void toStringTest() {
+    public void toStringTrueFalseTest() {
         assertThat(BooleanUtils.toStringTrueFalse(true)).isEqualTo("true");
     }
 
@@ -54,4 +54,12 @@ public class BooleanUtilsTest {
         assertThat(BooleanUtils.isNotTrue(false)).isTrue();
         assertThat(BooleanUtils.isNotTrue(true)).isFalse();
     }
+
+
+    @Test
+    public void toStringTest() {
+        assertThat(BooleanUtils.toString(false,"Y", "N")).isEqualTo("N");
+        assertThat(BooleanUtils.toString(true,"Y", "N")).isEqualTo("Y");
+    }
+
 }
