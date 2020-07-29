@@ -184,7 +184,7 @@ public class StreamTest {
 
 
     @Test
-    public void aaa() {
+    public void orElseTest() {
         List<TestVO> list = Collections.EMPTY_LIST;
 
         String a = list.stream().findFirst().map(testVO -> testVO.getName()).orElse(null);
@@ -193,7 +193,7 @@ public class StreamTest {
     }
 
     @Test
-    public void bbb() {
+    public void orElseVsOrElseGetTest() {
         List<String> list = new ArrayList<>();
         list.add("A");
 
