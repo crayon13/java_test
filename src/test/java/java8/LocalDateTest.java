@@ -24,4 +24,13 @@ public class LocalDateTest {
         log.debug(localDate.plusMonths(1).format(DateTimeFormatter.ofPattern("MM")));
     }
 
+    @Test
+    public void stringToLocalDateTest() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd");
+        String date = "20200501";
+        LocalDate beginCreateDate = LocalDate.parse(date, formatter);
+
+        log.debug(beginCreateDate.format(DateTimeFormatter.ofPattern("yyyyMM")));
+    }
+
 }

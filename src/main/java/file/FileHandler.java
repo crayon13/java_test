@@ -32,10 +32,10 @@ public class FileHandler {
 
             return true;
         } catch (FileNotFoundException e) {
-            System.out.println("TransmitterServiceImpl-writeToFile-FileNotFoundException:\n ÆÄÀÏ:"+ targetFilePath + "\n" + e);
+            System.out.println("TransmitterServiceImpl-writeToFile-FileNotFoundException:\n"+ targetFilePath + "\n" + e);
             return false;
         } catch (IOException e) {
-            System.out.println("TransmitterServiceImpl-writeToFile-IOException :\nÆÄÀÏ:"+ targetFilePath  + "\n" + e);
+            System.out.println("TransmitterServiceImpl-writeToFile-IOException :\n:"+ targetFilePath  + "\n" + e);
             return false;
         } catch (Exception e) {
             System.out.println(e);
@@ -46,7 +46,7 @@ public class FileHandler {
                     out.close();
                 }
             } catch (Exception e) {
-                System.out.println("TransmitterServiceImpl-writeToFile-out.close() Exception :\nÆÄÀÏ:"+ targetFilePath  + "\n" + e);
+                System.out.println("TransmitterServiceImpl-writeToFile-out.close() Exception :\nï¿½ï¿½ï¿½ï¿½:"+ targetFilePath  + "\n" + e);
             }
         }
     }
@@ -89,7 +89,7 @@ public class FileHandler {
             Files.copy(sourcePath, destinationPath, StandardCopyOption.REPLACE_EXISTING, StandardCopyOption.COPY_ATTRIBUTES);
             return true;
         } catch (IOException e) {
-            System.out.println("TransmitterServiceImpl-copyFileByNioChannel ÃÖÃÊ¿øº»»ý¼º½ÇÆÐ:\n¿øº»-" + sourceFilePath + " ¸ñÀû\n-" + destinationFilePath + "\n" + e);
+            System.out.println("TransmitterServiceImpl-copyFileByNioChannel ï¿½ï¿½ï¿½Ê¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½:\nï¿½ï¿½ï¿½ï¿½-" + sourceFilePath + " ï¿½ï¿½ï¿½ï¿½\n-" + destinationFilePath + "\n" + e);
             return false;
         }
 

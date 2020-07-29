@@ -68,6 +68,9 @@ public class LocalDateTimeTest {
         String localDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddHHmmss"));
         log.debug("localDate : {}, {}", localDate, "a");
 
+        LocalDateTime localDateTime = LocalDateTime.now();
+        log.debug(localDateTime.toString());
+
         assertEquals(localDate, simpleDate);
     }
 

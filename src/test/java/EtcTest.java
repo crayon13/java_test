@@ -1,4 +1,5 @@
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
@@ -10,6 +11,8 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -189,4 +192,56 @@ public class EtcTest {
     }
 
 
+    @Test
+    public void patternTes() {
+        String[] indices = ("goods-20200101,goods-20200102,goods-20200103" +
+                ",goods-rank-20200102,goods-rank-20200103,goods-rank-20200104" +
+                ",goods-stat-20200102,goods-stat-20200103,goods-stat-20200104")
+                .split(",");
+
+        String indexNamePrefix = StringUtils.removeEnd("goods-{}", "{}");
+
+        String patternString = "^" + indexNamePrefix + "[0-9]+$";
+
+        Pattern pattern = Pattern.compile(patternString);
+
+        List<String> indexList = Arrays.stream(indices).filter(
+                index -> pattern.matcher(index).find()
+        ).collect(Collectors.toList());
+
+
+        for (String index : indexList) {
+            log.debug(index);
+        }
+
+        log.debug(StringUtils.replaceOnce("a-{}-{}", "{}", "b"));
+        log.debug(StringUtils.remove("a-{}-{}", "{}"));
+
+
+        log.debug("Count : " + StringUtils.countMatches("a-{}-{}", "{}"));
+
+        test("");
+        test(null, null);
+        test();
+    }
+
+
+    @Test
+    public void forBySetTest() {
+        Set<String> set = new HashSet<>();
+        set.add("a");
+        set.add("b");
+
+        for (String id : set) {
+            log.debug(id);
+        }
+    }
+
+    private void test(String... args) {
+        if (args == null) {
+            log.debug("length : null");
+        } else {
+            log.debug("length : " + args.length);
+        }
+    }
 }

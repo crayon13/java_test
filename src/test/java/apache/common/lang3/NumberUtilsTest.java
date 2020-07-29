@@ -25,5 +25,4 @@ public class NumberUtilsTest {
         Integer a = null;
         assertThat(NumberUtils.max(a, 1)).isEqualTo(1);
     }
-
 }

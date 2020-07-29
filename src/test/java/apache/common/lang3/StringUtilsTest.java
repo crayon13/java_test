@@ -160,4 +160,22 @@ public class StringUtilsTest {
         assertThat("ab,c".contains(".")).isFalse();
         assertThat("ab c".contains(" ")).isTrue();
     }
+
+    @Test
+    public void defaultIfBlankTest() {
+        assertThat(StringUtils.defaultIfBlank("", "A")).isEqualTo("A");
+        assertThat(StringUtils.defaultIfBlank(" ", "A")).isEqualTo("A");
+        assertThat(StringUtils.defaultIfBlank(null, "A")).isEqualTo("A");
+
+        int a = 1;
+        a += 3;
+        log .debug("" +a);
+    }
+
+
+    @Test
+    public void containsAnyTest() {
+        String testValue = "2";
+        assertThat(StringUtils.containsAny(testValue, "2", "4")).isTrue();
+    }
 }

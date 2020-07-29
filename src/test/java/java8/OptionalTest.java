@@ -54,4 +54,27 @@ public class OptionalTest {
             log.debug(message + "!!");
         }
     }
+
+    @Test
+    public void isPresentTest() {
+        Dto given = null;
+
+        Optional<Dto> optionalDto = Optional.ofNullable(given);
+
+        if (optionalDto.isPresent()) {
+            log.debug("given is not null");
+        } else {
+            log.debug("given is null");
+        }
+
+        if (optionalDto.orElse(null) != null) {
+            log.debug("given is not null");
+        } else {
+            log.debug("given is null");
+        }
+
+    }
+
+
+
 }
