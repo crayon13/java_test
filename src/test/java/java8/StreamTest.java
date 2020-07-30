@@ -1,6 +1,5 @@
 package java8;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
@@ -10,11 +9,9 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -181,51 +178,6 @@ public class StreamTest {
             this.name = name;
         }
     }
-
-
-    @Test
-    public void orElseTest() {
-        List<TestVO> list = Collections.EMPTY_LIST;
-
-        String a = list.stream().findFirst().map(testVO -> testVO.getName()).orElse(null);
-
-        log.debug(a);
-    }
-
-    @Test
-    public void orElseVsOrElseGetTest() {
-        List<String> list = new ArrayList<>();
-        list.add("A");
-
-        long a1 = Optional.ofNullable(list).orElseGet(() -> getEmptyList("a1")).stream().count();
-        log.debug("a1 : " + a1);
-
-        long b1 = Optional.ofNullable(list).orElse(getEmptyList("b1")).stream().count();
-        log.debug("b1 : " + b1);
-
-        list = null;
-
-        long a2 = Optional.ofNullable(list).orElseGet(() -> getEmptyList("a2")).stream().count();
-        log.debug("a2 : " + a2);
-
-        long b2 = Optional.ofNullable(list).orElse(getEmptyList("b2")).stream().count();
-        log.debug("b2 : " + b2);
-
-        
-    }
-
-
-    private List<String> getEmptyList(String message) {
-        log.debug("++++++" + message);
-
-        return Collections.emptyList();
-    }
-
 }
 
-@AllArgsConstructor
-@Getter
-class TestVO {
-    String name;
 
-}
