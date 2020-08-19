@@ -15,6 +15,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -170,11 +171,29 @@ public class StreamTest {
 
     @Test
     public void intStreamTest() {
-        IntStream.range(0, 10).forEach(
+        List<Integer> expectedList = new ArrayList<>();
+
+        log.debug("IntStream.of");
+        IntStream.of(0, 10).forEach(
                 value -> {
+                    expectedList.add(value);
                     log.debug(value + ":" + (100 % 10 == value));
                 }
         );
+
+        assertThat(expectedList.size()).isEqualTo(2);
+
+        expectedList.clear();
+        log.debug("-----------------------------");
+        log.debug("IntStream.range");
+        IntStream.range(0, 10).forEach(
+                value -> {
+                    expectedList.add(value);
+                    log.debug(value + ":" + (100 % 10 == value));
+                }
+        );
+
+        assertThat(expectedList.size()).isEqualTo(10);
     }
 
     @Getter
