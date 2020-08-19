@@ -13,6 +13,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -165,6 +166,15 @@ public class StreamTest {
         keywordMap.get("1").setName("가");
 
         log.debug("++" + classAList.get(0).getName());
+    }
+
+    @Test
+    public void intStreamTest() {
+        IntStream.range(0, 10).forEach(
+                value -> {
+                    log.debug(value + ":" + (100 % 10 == value));
+                }
+        );
     }
 
     @Getter

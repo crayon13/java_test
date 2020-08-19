@@ -177,5 +177,41 @@ public class StringUtilsTest {
     public void containsAnyTest() {
         String testValue = "2";
         assertThat(StringUtils.containsAny(testValue, "2", "4")).isTrue();
+
+        String[] mobileAgents = {"iPhone", "iPod", "Android", "IEMobile", "Mobi", "lgtelecom", "PPC"};
+        assertThat(StringUtils.containsAny("key:abcd iPhone Test", mobileAgents)).isTrue();
+        assertThat(StringUtils.containsAny("key:abcd PPC Test", mobileAgents)).isTrue();
+        assertThat(StringUtils.containsAny("key:abcd any Test", mobileAgents)).isFalse();
     }
+
+    @Test
+    public void substringBetweenTest() {
+        String testValue = ";device_kind=ios;app_ver=ios 2.23.0;";
+        String appInfo = StringUtils.substringBetween(testValue, ";app_ver=", ";");
+
+        assertThat(appInfo).isEqualTo("ios 2.23.0");
+    }
+
+    @Test
+    public void substringAfterTest() {
+        String testValue = "APP Name/App Value";
+
+        assertThat(StringUtils.substringAfter(testValue,"/")).isEqualTo("App Value");
+        assertThat(StringUtils.substringAfter(testValue,".")).isEqualTo("");
+
+        testValue = "APP Name/App Value/add info";
+        assertThat(StringUtils.substringAfter(testValue,"/")).isEqualTo("App Value/add info");
+
+        assertThat(StringUtils.substringAfter("ios 2.23.0", " ")).isEqualTo("2.23.0");
+    }
+
+    @Test
+    public void substringAfterLastTest() {
+        String testValue = "APP Name/App Value/add info";
+
+        assertThat(StringUtils.substringAfterLast(testValue,"/")).isEqualTo("add info");
+        assertThat(StringUtils.substringAfterLast(testValue,".")).isEqualTo("");
+    }
+
+
 }
