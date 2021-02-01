@@ -2,12 +2,15 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.Test;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -93,5 +96,64 @@ public class RegExpTest {
         } else {
             throw new Exception("aaa");
         }
+    }
+
+    @Test
+    public void removeReferer() {
+        String given = "http://ho.local.musinsa.com/web/";
+        String actual = getMenuUrl(given);
+
+        assertThat(actual).isEqualTo("/web/");
+
+        given = "http://ho.local.musinsa.com:8080/web/";
+        actual = getMenuUrl(given);
+
+        assertThat(actual).isEqualTo("/web/");
+    }
+
+
+    String refererPattern = "com";
+
+    private String getMenuUrl(String referer) {
+        try {
+            URL url = new URL(referer);
+            log.debug("URL Path: {} ", url.getPath());
+            if (!url.getHost().endsWith(refererPattern)) {
+                throw new MalformedURLException("not allow pattern");
+            }
+
+            return url.getPath();
+        } catch (MalformedURLException e) {
+            log.error(e.getMessage(), e);
+        }
+
+        return StringUtils.EMPTY;
+    }
+
+    private String removeReferer(String referer) {
+
+        String menuUrl = StringUtils.EMPTY;
+        String regex = "(?<=" + "com" + ")(\\W|\\w)+$";
+        Pattern pattern = Pattern.compile(regex, Pattern.MULTILINE);
+        Matcher matcher = pattern.matcher(referer);
+
+        while (matcher.find()) {
+            menuUrl = matcher.group();
+        }
+        return menuUrl;
+    }
+
+
+    @Test
+    public void replaceHtmlTagTest() {
+        String given = "<table><tbody><tr><td><img src=\"http://image.musinsa.com/mfile_s01/_old/old_fr_4e8882ec79c859630.jpg\" alt=\"2011 FALL COLLECTION START UP!!\"></td></tr></tbody></table>";
+        assertThat(replaceHtmlTag(given)).isEqualTo("");
+    }
+
+
+    private String replaceHtmlTag(String content) {
+        return content.replaceAll("<[^>]*>", " ")
+                .replaceAll("<!--", " ").replaceAll("-->", " ")
+                .replace("&nbsp;","").replaceAll("\\s\\s+", " ").replace("본문 글 출력","").trim();
     }
 }

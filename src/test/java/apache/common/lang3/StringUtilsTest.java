@@ -109,6 +109,8 @@ public class StringUtilsTest {
         testList.add("3");
 
         assertThat( StringUtils.join(testList, ",")).isEqualTo("1,2,3");
+
+        log.debug(StringUtils.joinWith("+", "A", "B", "C"));
     }
 
     @Test
@@ -212,6 +214,20 @@ public class StringUtilsTest {
         assertThat(StringUtils.substringAfterLast(testValue,"/")).isEqualTo("add info");
         assertThat(StringUtils.substringAfterLast(testValue,".")).isEqualTo("");
     }
+
+
+    @Test
+    public void ddd() {
+        String requestImageUrl = "https://image.msscdn.com/images/style/detail/10000/100_345.jpg";
+        log.debug(String.valueOf(StringUtils.contains(requestImageUrl,"/images/style/detail/")) );
+        log.debug(StringUtils.split(requestImageUrl, "/images/style/detail/")[1]);
+        log.debug(requestImageUrl.split("/images/style/detail/")[1].split("/")[0]);
+
+        requestImageUrl = StringUtils.split(StringUtils.split(requestImageUrl, "/images/style/detail/")[1], "/")[0];
+
+        log.debug(requestImageUrl);
+    }
+
 
 
 }

@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -129,6 +130,13 @@ public class EnumTest {
         assertEquals(TestEnum.e1.isAll(), false);
     }
 
+    @Test
+    public void nullCompareTest() {
+        TestEnum testEnum = null;
+        assertThat(TestEnum.all == testEnum).isFalse();
+        assertThat(TestEnum.all.equals(testEnum)).isFalse();
+    }
+
 
 
     enum ServerZone {
@@ -197,5 +205,6 @@ public class EnumTest {
             return this.equals(all);
         }
     }
+
 
 }

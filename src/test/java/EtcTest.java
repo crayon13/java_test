@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
@@ -237,11 +238,83 @@ public class EtcTest {
         }
     }
 
+    @Test
+    public void stringConcat() {
+        String b = null;
+        String a1 = "a" + b;
+        log.debug(a1);
+
+        String a2 = "a".concat(b);
+        log.debug(a2);
+    }
+
     private void test(String... args) {
         if (args == null) {
             log.debug("length : null");
         } else {
             log.debug("length : " + args.length);
+        }
+    }
+
+
+    @Test
+    public void stringTest() {
+        String a = "A";
+        String b = a;
+
+        a = "B";
+
+        log.debug(a);
+        log.debug(b);
+
+        String c = new String("A");
+
+        log.debug((b.hashCode() == c.hashCode()) + "");
+
+
+        log.debug(setGoodsStarPercent(13664, 2897) + "..");
+
+
+    }
+
+
+    private int setGoodsStarPercent(Integer grade, Integer reviewCount) {
+
+        if (grade == null || reviewCount == null) {
+            return 0;
+        }
+
+        if (grade == 0 || reviewCount == 0) {
+            return 0;
+        }
+
+
+        int returnValue = (int)((double)grade / reviewCount / 5 * 100);
+
+        return returnValue;
+    }
+
+    @Test
+    public void forSangkyun() {
+        String[] keywords = {"오늘만+이+특가", "오늘만+1+1", "오늘만 1 1", "1+1+오늘만", "1 1 오늘만"};
+
+        for (String keyword : keywords) {
+            String phase1 = StringUtils.replace(keyword, "+", " ");
+
+            Pattern pattern = Pattern.compile("[0-9] [0-9]");
+            Matcher matcher = pattern.matcher(phase1);
+
+            String phase2 = phase1;
+            if (matcher.find()) {
+                String group = matcher.group();
+                phase2 = StringUtils.replace(
+                        phase1,
+                        group,
+                        StringUtils.replace(group, " ", "+")
+                );
+            }
+
+            log.debug(phase2);
         }
     }
 }

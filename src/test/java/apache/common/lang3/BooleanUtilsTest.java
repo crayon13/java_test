@@ -35,6 +35,8 @@ public class BooleanUtilsTest {
 
         String a = null;
         assertThat(BooleanUtils.toBoolean(a)).isFalse();
+
+        assertThat(BooleanUtils.toBoolean("V")).isFalse();
     }
 
     @Test
@@ -63,6 +65,26 @@ public class BooleanUtilsTest {
     public void toStringTest() {
         assertThat(BooleanUtils.toString(false,"Y", "N")).isEqualTo("N");
         assertThat(BooleanUtils.toString(true,"Y", "N")).isEqualTo("Y");
+    }
+
+    @Test
+    public void andTest() {
+        final boolean saleGoods = false;
+        final boolean includeSoldOut = false;
+        final boolean exclusiveYn = false;
+        final boolean timeSale = false;
+
+        boolean result1 = (saleGoods == false
+                && includeSoldOut == false
+                && exclusiveYn == false
+                && timeSale == false);
+
+        boolean result2 = (!saleGoods
+                && !includeSoldOut
+                && !exclusiveYn
+                && !timeSale);
+
+        assertThat(result1).isEqualTo(result2);
     }
 
 }
