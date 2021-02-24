@@ -2,6 +2,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.Test;
 
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLDecoder;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -316,5 +319,20 @@ public class EtcTest {
 
             log.debug(phase2);
         }
+
+
+        String a = "1+1";
+
+        log.debug(URLDecoder.decode(a));
+    }
+
+    @Test
+    public void UrlTest() throws MalformedURLException {
+        String urlString = "http://abc.com:8000";
+        URL url = new URL(urlString);
+
+        assertEquals("http", url.getProtocol());
+        assertEquals("abc.com", url.getHost());
+        assertEquals(8000, url.getPort());
     }
 }
