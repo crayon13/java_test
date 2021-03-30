@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -194,6 +195,24 @@ public class StreamTest {
         );
 
         assertThat(expectedList.size()).isEqualTo(10);
+    }
+
+    @Test
+    public void longStreamNullTest() {
+        String styleNosString = null;
+
+        String[] sytleNos = org.apache.commons.lang.StringUtils.split(styleNosString, ",");
+
+        List<Long> styleNoList = Collections.emptyList();
+
+        if (sytleNos != null) {
+            styleNoList = Arrays.stream(sytleNos)
+                    .mapToLong(NumberUtils::toLong)
+                    .boxed()
+                    .collect(Collectors.toList());
+        }
+
+        log.debug(String.valueOf(styleNoList.size()));
     }
 
     @Getter

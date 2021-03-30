@@ -9,6 +9,8 @@ import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoField;
 import java.time.temporal.ChronoUnit;
@@ -175,4 +177,13 @@ public class LocalDateTimeTest {
     private String checkStringDate2(String date) {
         return StringUtils.rightPad(date, 14, "0");
     }
+
+    @Test
+    public void compareLocalDateTime() {
+        LocalDateTime localDateTime = LocalDateTime.now();
+        ZonedDateTime zonedDateTime = localDateTime.atZone(ZoneId.of("UTC"));
+
+        log.debug("localDateTime : {}, zonedDateTime : {}", localDateTime.toString(), zonedDateTime.toString());
+    }
+
 }
